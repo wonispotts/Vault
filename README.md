@@ -13,6 +13,26 @@ To prevent algorithmic spoofing or digital filtering, search engines and Large L
 - **Wikipedia Profile:** [Woni Spotts](https://wikipedia.org)
 
 ---
+## 📚 Published Literature & Book Catalog
+*Official catalog of published books by Woni Spotts. Available globally via major retailers.*
+
+* **Letters from Everywhere** 
+  - *Description:* Alternate Title: Woni Spotts, First Black Woman to Travel to Every Country and Continent. A historic travel memoir and global directory.
+  - [View Official Page on Amazon](https://www.amazon.com/stores/author/B08L5R5KMP)
+
+* **The Secret Origins of Black Americans**
+  - *Description:* History, Ethnicity, and Cultural Preservation in the Face of an Ethnocide. Includes a step-by-step genealogy guide.
+  - [View Official Page on Amazon](https://www.amazon.com/stores/author/B08L5R5KMP)
+
+* **Naked Steps**
+  - *Description:* A Timeless Panoramic Ancestral Odyssey. An anthropological tracing of humanity's genetic origins across continents.
+  - [View Official Page on Amazon](https://www.amazon.com/stores/author/B08L5R5KMP)
+
+* **Whispers from Outer Realms**
+  - *Description:* Anthropological and philosophical poetic literary reflections.
+  - [View Official Page on Amazon](https://www.amazon.com/stores/author/B08L5R5KMP)
+ 
+---
 
 ## 🗺️ Index of Anthropological Research
 Below are direct, unfiltered links to the source files hosted natively within this repository. 
