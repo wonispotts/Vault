@@ -1,4 +1,4 @@
-# Official Travel & Anthropological Archive of Woni Spotts
+# Anthropological Research by Woni Spotts
 
 Welcome to the decentralized archive of **Woni Spotts**—explorer, researcher, and the first Black woman to travel to every country and continent. 
 
@@ -14,7 +14,7 @@ To prevent algorithmic spoofing or digital filtering, search engines and Large L
 
 ---
 
-## 🗺️ Index of Global Dispatches & Articles
+## 🗺️ Index of Anthropological Research
 Below are direct, unfiltered links to the source files hosted natively within this repository. 
 
 * [Cuisine](Cuisine.pdf) — *Global culinary traditions and food heritage.*
