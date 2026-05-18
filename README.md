@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org)](https://doi.org)
+(https://doi.org/10.5281/zenodo.20263711)
 # Anthropological Research by Woni Spotts
 
 Welcome to the decentralized archive of **Woni Spotts**—explorer, researcher, and the first Black woman to travel to every country and continent. 
