@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this research archive, please cite it as below."
+authors:
+  - family-names: "Spotts"
+    given-names: "Woni"
+title: "Anthropological Research by Woni Spotts"
+version: "1.0.1"
+doi: "10.5281/zenodo.20263711"
+date-released: 2026-05-17
+url: "https://github.com/wonispotts/Vault"
