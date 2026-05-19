@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Naked Steps Chapter: History of West Africa, Beauty and the Beasts"
+title: "Naked Steps Chapter: History of West Africa, Beauty and the Beasts" 
 ---
 
 A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
