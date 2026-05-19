@@ -17,22 +17,27 @@
     
     /* Weathered, Explorer Journal Overlay Sheet */
     .explorer-journal-page {
-      max-width: 650px;
-      margin: 60px auto;
-      padding: 50px 45px;
-      text-align: center;
-      border: 1px solid #c4b595;
-      background-color: rgba(254, 252, 246, 0.97) !important; /* Authentic heavy watercolor paper tone */
-      box-shadow: 0 15px 50px rgba(35, 30, 20, 0.25);
-      border-radius: 2px;
-      position: relative;
-    }
-
-    /* Hand-Inked Dashed Framing Borders */
-    .explorer-journal-page::before {
-      content: "";
-      position: absolute;
-      top: 18px;
+     .explorer-journal-page {
+  max-width: 650px;
+  margin: 60px auto;
+  padding: 50px 45px;
+  text-align: center;
+  border: 1px solid #c4b595;
+  background-color: rgba(254, 252, 246, 0.97) !important; 
+  box-shadow: 0 15px 50px rgba(35, 30, 20, 0.25);
+  border-radius: 2px;
+  position: relative;
+}
+.explorer-journal-page::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  border: 1px dashed #ad9b79;
+  pointer-events: none;
+}
       left: 18px;
       right: 18px;
       bottom: 18px;
