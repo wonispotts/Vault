@@ -1,6 +1,7 @@
 title: Woni Spotts Research
-description: Anthropological research on world genetics, African traditions, and global history.
+description: Anthropological research on world genetics and global history
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
