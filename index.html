@@ -5,104 +5,109 @@ layout: null
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Woni Spotts Research - Field Log & Archive</title>
+  <title>Woni Spotts Research - Field Log</title>
   <style>
-    /* Immersive Old-World Travelogue Background Setup */
+    /* Universal Parchment Texture Layer */
     html, body {
-      background-image: url("./Naked-Steps-Chapter-Australia.jpg") !important;
-      background-size: cover !important;
+      background-image: url("https://transparenttextures.com") !important;
+      background-color: #f1ebd9 !important; /* Rich Antique Map Tint */
       background-attachment: fixed !important;
-      background-position: center !important;
-      background-repeat: no-repeat !important;
-      color: #2b2b2b !important;             /* Charcoal ink text */
+      color: #362e24 !important;             
       font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
       margin: 0;
       padding: 0;
     }
     
-    /* Textured Journal Paper Sheet Overlay */
+    /* Weathered Explorer Journal Envelope */
     .explorer-journal-page {
       max-width: 650px;
       margin: 80px auto;
       padding: 70px 50px;
       text-align: center;
-      border: 1px solid #c4b99a;
-      background-color: rgba(254, 252, 248, 0.95) !important; /* Semi-opaque watercolor paper texture */
-      box-shadow: 0 15px 45px rgba(35, 30, 20, 0.2);
-      border-radius: 4px;
+      border: 1px solid #c4b595;
+      background-color: #fdfaf2 !important;  /* Watercolor Paper Core */
+      box-shadow: 
+        0 15px 50px rgba(35, 30, 20, 0.2), 
+        inset 0 0 40px rgba(184, 163, 127, 0.15); 
+      border-radius: 2px;
       position: relative;
     }
 
-    /* Hand-Drawn Intricate Sketchbook Border Trim */
+    /* Hand-Inked Dashed Framing Borders */
     .explorer-journal-page::before {
       content: "";
       position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
-      border: 1px dashed #bba07a;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      border: 1px dashed #ad9b79;
       pointer-events: none;
     }
 
-    /* Deep Crimson Explorer Branding Title */
+    /* Crimson Explorer Heading Title */
     .archive-main-title {
-      color: #9e1b1b !important;            
+      color: #8c1c1c !important;            /* Weathered Oxblood Crimson */
       font-size: 2.8rem;
       font-weight: bold;
       margin-top: 15px;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       letter-spacing: 0.5px;
     }
 
-    /* Minimalist Journal Subheading Line */
+    /* Elegant Journal Subheading Line */
     .archive-subtitle {
       font-size: 1.25rem;
       font-style: italic;
-      color: #555555;
-      margin-bottom: 60px;
+      color: #5c5243;
+      margin-bottom: 50px;
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* Container for Your Custom Explorer Interface Element */
+    /* Container for the Navigation Emblem */
     .expedition-action-vault {
       margin: 40px auto 20px auto;
     }
 
-    /* Premium Antique Wax-Seal Style Navigation Button */
-    .wax-seal-button {
+    /* Antique Hand-Stamped Explorer Compass Emblem */
+    .compass-emblem-button {
       display: inline-block !important;
-      background-color: #8a1313 !important;   /* Deep crimson wax color */
-      color: #fdfaf2 !important;             /* Cream lettering text */
+      text-decoration: none !important;
+      color: #8c1c1c !important;            
       font-family: "Palatino", "Georgia", serif !important;
-      font-size: 1.4rem !important;
+      font-size: 1.25rem !important;
       font-weight: bold !important;
       text-transform: uppercase !important;
       letter-spacing: 2px !important;
-      text-decoration: none !important;
-      padding: 18px 36px !important;
-      border-radius: 50px !important;       /* Gives it that round custom seal look */
-      border: 2px solid #6b0d0d !important;
-      box-shadow: 0 6px 20px rgba(138, 19, 19, 0.35), inset 0 2px 5px rgba(255,255,255,0.2);
+      padding: 25px 35px !important;
+      border-radius: 4px !important;        
+      border: 1px solid #ad9b79 !important; 
+      background-color: #fdfbf7 !important; 
+      box-shadow: 0 8px 20px rgba(40,35,25,0.1);
       transition: all 0.2s ease-in-out !important;
       cursor: pointer;
     }
 
-    /* Hover States simulating pressing a physical seal down */
-    .wax-seal-button:hover {
-      background-color: #a11b1b !important;
-      box-shadow: 0 4px 12px rgba(138, 19, 19, 0.5), inset 0 2px 5px rgba(255,255,255,0.3);
-      transform: translateY(1px);
+    .compass-emblem-button::before {
+      content: "🧭 ";                       
+      font-size: 1.4rem;
+      vertical-align: middle;
+      margin-right: 8px;
     }
 
-    /* Vintage Note Container Details */
+    .compass-emblem-button:hover {
+      background-color: #f7f3e8 !important;
+      border-color: #8c1c1c !important;
+    }
+
+    /* Vintage Note Details */
     .expedition-note {
       font-size: 1rem;
-      color: #666666;
+      color: #6e6350;
       font-style: italic;
-      margin-top: 25px;
+      margin-top: 30px;
       letter-spacing: 0.5px;
     }
   </style>
@@ -119,10 +124,10 @@ layout: null
       Field Logs and Ethnographic Records for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
 
-    <!-- The Dedicated Explorer Interface Gateway Link -->
+    <!-- The Explorer Gateway Badge -->
     <div class="expedition-action-vault">
-      <a href="https://github.com" class="wax-seal-button" target="_blank">Open Research Log</a>
-      <div class="expedition-note">Click the official seal to inspect the underlying research document indexes.</div>
+      <a href="https://github.com" class="compass-emblem-button" target="_blank">Examine Research Ledger</a>
+      <div class="expedition-note">Break the document seal to inspect the underlying research log archives.</div>
     </div>
 
   </div>
