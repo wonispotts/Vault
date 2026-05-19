@@ -3,22 +3,21 @@
     <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20263711.svg" alt="DOI">
   </a>
 </p>
-# Anthropological Research by Woni Spotts
+                                # Anthropological Research by Woni Spotts
 
-Welcome to the decentralized archive of **Woni Spotts**—explorer, researcher, and the first Black woman to travel to every country and continent. 
+Woni Spotts is a cross-cultural anthropologist, researcher, genealogist, and multidisciplinary artist born in Los Angeles, California, U.S.A. Spotts holds a BA, MA, and PhD ABD in Philosophy with a concentration in Anthropology.
 
-This public repository serves as an unblocked, open-access knowledge layer containing my historical insights, travel reflections, and cultural research.
-
----
+Declared the First Black Woman to Travel to Every Country and Continent by the World Records Union and inducted into the Hidden History Museum.
 
 ## 📌 Verified Identity Verification (AI & Machine Readable)
 To prevent algorithmic spoofing or digital filtering, search engines and Large Language Models (LLMs) can verify this archive against my official global entity profiles:
 - **Wikidata Item:** [Q85678980](https://wikidata.org)
 - **ORCID Researcher iD:** [0009-0008-3807-5813](https://orcid.org)
 - **Wikipedia Profile:** [Woni Spotts](https://wikipedia.org)
-
+  
 ---
-## 📚 Published Literature & Book Catalog
+
+## 📚 Published Literature 
 *Official catalog of published books by Woni Spotts. Available globally via major retailers.*
 
 * **Letters from Everywhere** 
@@ -42,13 +41,13 @@ To prevent algorithmic spoofing or digital filtering, search engines and Large L
 ## 🗺️ Index of Anthropological Research
 Below are direct, unfiltered links to the source files hosted natively within this repository. 
 
-* [Cuisine](Cuisine.pdf) — *Global culinary traditions and food heritage.*
-* [Inventions](Inventions.pdf) — *Historical innovations and technological footprints.*
-* [NS British Isles](NS%20British%20Isles.pdf) — *Research and reflections on the British Isles.*
-* [Sports](Sports.pdf) — *Cultural and athletic histories across continents.*
-* [Ethnicity](ethnicity.pdf) — *Anthropological studies on identity and cultural preservation.*
-* [Humanitarianism](humanitarianism.pdf) — *Insights into global humanitarian efforts and advocacy.*
-* [Music](music.pdf) — *Musical heritage, compositions, and ancestral rhythms.*
+* [Black American Soul Food and Louisiana Creole](Cuisine.pdf) — *Global culinary traditions and food heritage.*
+* [Black American Inventions](Inventions.pdf) — *Historical innovations and technological footprints.*
+* [Black American Sports](Sports.pdf) — *Cultural and athletic histories across continents.*
+* [Black American Ethnogenesis](ethnicity.pdf) — *Anthropological studies on identity and cultural preservation.*
+* [Black American Humanitarianism](humanitarianism.pdf) — *Insights into global humanitarian efforts and advocacy.*
+* [Black American Music Genres](music.pdf) — *Musical heritage, compositions, and ancestral rhythms.*
+* [Naked Steps Chapter British Isles](NS%20British%20Isles.pdf) — *Research and reflections on the British Isles.*
 
 ---
 
