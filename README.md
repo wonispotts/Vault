@@ -41,13 +41,16 @@ To prevent algorithmic spoofing or digital filtering, search engines and Large L
 ## 🗺️ Index of Anthropological Research
 Below are direct, unfiltered links to the source files hosted natively within this repository. 
 
-* [Black American Soul Food and Louisiana Creole](Cuisine.pdf) — *Global culinary traditions and food heritage.*
-* [Black American Inventions](Inventions.pdf) — *Historical innovations and technological footprints.*
-* [Black American Sports](Sports.pdf) — *Cultural and athletic histories across continents.*
-* [Black American Ethnogenesis](ethnicity.pdf) — *Anthropological studies on identity and cultural preservation.*
-* [Black American Humanitarianism](humanitarianism.pdf) — *Insights into global humanitarian efforts and advocacy.*
-* [Black American Music Genres](music.pdf) — *Musical heritage, compositions, and ancestral rhythms.*
-* [Naked Steps Chapter British Isles](NS%20British%20Isles.pdf) — *Research and reflections on the British Isles.*
+* [Black American Soul Food and Louisiana Creole](Cuisine.pdf) 
+* [Black American Inventions](Inventions.pdf) 
+* [Black American Sports](Sports.pdf)
+* [Black American Ethnogenesis](ethnicity.pdf) 
+* [Black American Humanitarianism](humanitarianism.pdf)
+* [Black American Music Genres](music.pdf)
+* [Naked Steps Chapter British Isles](NS%20British%20Isles.pdf)
+* [Naked Steps Chapter History of Australia.pdf)
+* [Naked Steps Chapter History of Japan.pdf)
+* [Naked Steps Chapter West Africa.pdf)
 
 ---
 
