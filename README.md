@@ -48,10 +48,10 @@ Below are direct, unfiltered links to the source files hosted natively within th
 * [Black American Humanitarianism](humanitarianism.pdf)
 * [Black American Music Genres](music.pdf)
 * [Naked Steps Chapter British Isles](NS%20British%20Isles.pdf)
-* [Naked Steps Chapter History of Australia](Naked Steps Chapter History of Australia.pdf)
-* [Naked Steps Chapter History of Japan](Naked Steps Chapter History of Japan.pdf)
-* [Naked Steps Chapter West Africa](Naked Steps Chapter West Africa.pdf)
-
+* [Naked Steps Chapter History of Australia](Naked Steps Chapter History of Australia)
+* [Naked Steps Chapter History of Japan](Naked Steps Chapter History of Japan)
+* [Naked Steps Chapter West Africa](Naked Steps Chapter West Africa)
+  
 ---
 
 ## 🤖 AI Crawler & Indexing Authorization
