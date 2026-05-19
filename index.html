@@ -5,140 +5,141 @@ layout: null
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Woni Spotts Research</title>
+  <title>Woni Spotts Research - Travel & Ethnographic Archive</title>
   <style>
-    /* Global Styling for the Antique Field Journal Aesthetic */
+    /* Immersive Old-World Travelogue & Explorer Aesthetics */
     html, body {
-      background-color: #fdfaf2 !important; /* Elegant Warm Cream Background */
-      color: #2b2b2b !important;             /* Crisp charcoal reader text */
+      background-color: #f6f1e5 !important; /* Rich Vintage Map Cream fallback */
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.03) 100%) !important;
+      color: #2b2b2b !important;             /* Charcoal ink text */
       font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
       margin: 0;
       padding: 0;
     }
     
-    /* Main Content Structural Envelope */
-    .magazine-container {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 40px 20px 80px 20px;
-      text-align: center;
-    }
-
-    /* Wide Horizontal Expedition Banner */
-    .journal-banner-frame {
-      width: 100%;
+    /* Centered Main Document Container */
+    .explorer-container {
       max-width: 740px;
-      margin: 0 auto 40px auto;
-      border: 1px solid #dcd1bd;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin: 60px auto;
+      padding: 50px 40px;
+      text-align: center;
+      border: 1px solid #d4cbb3;
+      background-color: #fdfbf7 !important;  /* High-end watercolor paper texture tone */
+      box-shadow: 0 8px 25px rgba(43,40,33,0.06);
+      border-radius: 2px;
+      position: relative;
     }
 
-    .journal-banner-frame img {
-      display: block;
-      width: 100%;
-      height: auto;
+    /* Top Ornamental Explorer Boundary Accent Lines */
+    .explorer-container::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px dashed #c4b99a;
+      pointer-events: none;
     }
 
-    /* Main Crimson Branding Title */
-    .site-main-title {
-      color: #9e1b1b !important;            /* Premium Crimson Accent */
+    /* Crimson Explorer Header Title */
+    .archive-main-title {
+      color: #9e1b1b !important;            /* Premium Expedition Crimson Ink */
       font-size: 2.6rem;
       font-weight: bold;
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
     }
 
-    /* Editorial Context Subtitle */
-    .site-subtitle {
-      font-size: 1.25rem;
+    /* Elegant Journal Subheading */
+    .archive-subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
       color: #555555;
-      margin-bottom: 50px;
-      border-bottom: 1px solid #e3dec3;
-      padding-bottom: 25px;
-      max-width: 680px;
+      margin-bottom: 45px;
+      border-bottom: 1px solid #d4cbb3;
+      padding-bottom: 20px;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* Premium Academic Directory Grid */
-    .research-directory {
+    /* Clean Academic Travelogue List */
+    .document-ledger {
       padding: 0;
       list-style-type: none;
       text-align: left;
-      max-width: 650px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
-    /* Individual Article Spacing Blocks */
-    .research-directory li {
+    /* Document Entry Layout Spacing */
+    .document-ledger li {
       margin-bottom: 30px;
       padding-left: 20px;
-      border-left: 4px solid #9e1b1b;       /* Decorative Crimson Left Border */
+      border-left: 3px solid #9e1b1b;       /* Crimson alignment anchor */
     }
 
-    /* Elegant Link Controls */
-    .research-directory a {
+    /* Document Ledger Web Links */
+    .document-ledger a {
       color: #9e1b1b !important;            
       text-decoration: none;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: bold;
       display: inline-block;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
-    .research-directory a:hover {
+    .document-ledger a:hover {
       text-decoration: underline;
     }
 
-    /* Muted Academic Metadata Tags */
-    .doi-tag {
+    /* Muted Index Metadata Citations */
+    .archive-metadata {
       font-size: 0.95rem;
       color: #666666;
-      font-family: monospace;
+      font-family: "Palatino", serif;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <div class="magazine-container">
+  <div class="explorer-container">
     
-    <!-- Wide Horizontal Ethnographic Atlas Banner -->
-    <div class="journal-banner-frame">
-      <img src="./Naked-Steps-Chapter-Australia.jpg" alt="Antique Natural History Field Journal Artwork">
+    <!-- Header Identification -->
+    <h1 class="archive-main-title">Woni Spotts Research</h1>
+
+    <!-- Subtitle Frame -->
+    <div class="archive-subtitle">
+      Exploration Log and Ethnographic Field Archives for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
 
-    <!-- Main Branding Header -->
-    <h1 class="site-main-title">Woni Spotts Research</h1>
-
-    <!-- Book Project Subtitle -->
-    <div class="site-subtitle">
-      Scholarly Research Archives for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
-    </div>
-
-    <!-- Your Main List of 10 Attractive Article Links -->
-    <ul class="research-directory">
+    <!-- Active Research Link Ledger -->
+    <ul class="document-ledger">
       
-      <!-- Article 1: Cuisine -->
+      <!-- Entry 1 -->
       <li>
         <a href="./Cuisine.pdf" target="_blank">Black Americans, Originators of Soul Food and Louisiana Creole Cuisines (PDF)</a>
-        <div class="doi-tag">DOI: 10.5281/zenodo.20069548</div>
+        <div class="archive-metadata">DOI: 10.5281/zenodo.20069548 &bull; Document File Record</div>
       </li>
 
-      <!-- Article 2: West Africa -->
+      <!-- Entry 2 -->
       <li>
         <a href="./Naked Steps Chapter West Africa.pdf" target="_blank">Naked Steps Chapter: History of West Africa, Beauty and the Beasts (PDF)</a>
-        <div class="doi-tag">Research Paper Document</div>
+        <div class="archive-metadata">Field Research Record &bull; Document File Record</div>
       </li>
 
-      <!-- Placeholders for your remaining 8 papers (We will swap these names next) -->
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 3]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 4]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 5]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 6]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 7]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 8]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 9]</a></li>
-      <li><a href="#" style="opacity: 0.4; pointer-events: none;">[Pending Research Document 10]</a></li>
+      <!-- Inactive slots for remaining papers -->
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 3]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 4]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 5]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 6]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 7]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 8]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 9]</a></li>
+      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 10]</a></li>
 
     </ul>
 
