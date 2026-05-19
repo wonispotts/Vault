@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts"
+title: "Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts" 
 ---
 <style>
   /* Centers all title elements, headers, and navigation menus */
