@@ -3,6 +3,7 @@
     <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20263711.svg" alt="DOI">
   </a>
 </p>
+
 # **Anthropological Research by Woni Spotts**
 
 Woni Spotts is a cross-cultural anthropologist, researcher, genealogist, and multidisciplinary artist born in Los Angeles, California, U.S.A. Spotts holds a BA, MA, and PhD ABD in Philosophy with a concentration in Anthropology.
