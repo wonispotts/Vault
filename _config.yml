@@ -1,3 +1,6 @@
-_config.yml
+title: Woni Spotts Research
+description: Anthropological research on world genetics, African traditions, and global history.
+theme: minima
 plugins:
-  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
