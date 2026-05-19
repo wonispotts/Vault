@@ -8,9 +8,7 @@ title: "Naked Steps Chapter: History of West Africa, Beauty and the Beasts"
 </h1>
 
 <div style="text-align: center; margin-bottom: 30px; font-weight: bold;">
-  A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
-</div>
-
+ 
 Along the Niger River and Sahel, early human migrations and prehistoric innovations rose into powerful kingdoms in West Africa. Through agriculture, commerce, and the trade of human cargo, empires in Ghana, Mali, and Songhai dominated the region. Words weave together the lush flora and fauna around the Trans-Saharan and Trans-Atlantic slave trades. The chapter explores crimes against humanity from Africa and the eastern Mediterranean into the Americas.
 
 ![Naked Steps Chapter West Africa](./Naked-Steps-Chapter-West-Africa.jpg)
