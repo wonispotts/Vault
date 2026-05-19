@@ -5,60 +5,177 @@ layout: null
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Woni Spotts Research</title>
+  <title>Woni Spotts Research - Field Log</title>
   <style>
+    /* Full Page Background Wrapped in Your Actual Old Map Artwork Texture */
     html, body {
-      background-color: #fdfaf2 !important; 
-      color: #2b2b2b !important;             
-      font-family: "Palatino", serif !important;
+      background-image: url("./Naked-Steps-Chapter-History-British-Isles.jpg") !important;
+      background-size: cover !important;
+      background-attachment: fixed !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      color: #362e24 !important;             /* Vintage sepia-charcoal ink color */
+      font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
       margin: 0;
       padding: 0;
     }
-    .main-container {
-      max-width: 740px;
+    
+    /* Weathered, Explorer Journal Overlay Sheet */
+    .explorer-journal-page {
+      max-width: 650px;
       margin: 60px auto;
-      padding: 40px;
+      padding: 50px 45px;
       text-align: center;
+      border: 1px solid #c4b595;
+      background-color: rgba(254, 252, 246, 0.97) !important; /* Authentic heavy watercolor paper tone */
+      box-shadow: 0 15px 50px rgba(35, 30, 20, 0.25);
+      border-radius: 2px;
+      position: relative;
     }
-    h1 {
-      color: #9e1b1b !important;            
-      font-size: 2.5rem;
+
+    /* Hand-Inked Dashed Framing Borders */
+    .explorer-journal-page::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      border: 1px dashed #ad9b79;
+      pointer-events: none;
+    }
+
+    /* Crimson Explorer Heading Title */
+    .archive-main-title {
+      color: #8c1c1c !important;            /* Weathered Oxblood Crimson Ink */
+      font-size: 2.6rem;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Elegant Journal Subheading Line */
+    .archive-subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #5c5243;
       margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .pdf-list {
+
+    /* Clean Academic Travelogue List Container */
+    .document-ledger {
       padding: 0;
       list-style-type: none;
       text-align: left;
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 550px;
+      margin: 0 auto 40px auto;
     }
-    .pdf-list li {
+
+    /* Individual Document Spacing Blocks */
+    .document-ledger li {
       margin-bottom: 25px;
       padding-left: 15px;
-      border-left: 3px solid #9e1b1b;
+      border-left: 3px solid #8c1c1c;       /* Crimson alignment anchor */
     }
-    .pdf-list a {
-      color: #9e1b1b !important;            
+
+    /* Document Ledger Web Links */
+    .document-ledger a {
+      color: #8c1c1c !important;            
       text-decoration: underline;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: bold;
+      display: inline-block;
+    }
+
+    .document-ledger a:hover {
+      color: #b02323 !important;
+    }
+
+    /* Container for the Action Button link */
+    .expedition-action-vault {
+      margin-top: 30px;
+      border-top: 1px solid #d4cbb3;
+      padding-top: 25px;
+    }
+
+    /* Antique Style Link Action Button */
+    .compass-emblem-button {
+      display: inline-block !important;
+      text-decoration: underline !important;
+      color: #8c1c1c !important;            
+      font-family: "Palatino", "Georgia", serif !important;
+      font-size: 1.2rem !important;
+      font-weight: bold !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      padding: 15px 25px !important;
+      border-radius: 4px !important;        
+      border: 1px solid #ad9b79 !important; 
+      background-color: #fdfbf7 !important; 
+      box-shadow: 0 6px 15px rgba(40,35,25,0.08);
+      cursor: pointer;
+    }
+
+    .compass-emblem-button:hover {
+      background-color: #f7f3e8 !important;
+      border-color: #8c1c1c !important;
     }
   </style>
 </head>
 <body>
 
-  <div class="main-container">
+  <div class="explorer-journal-page">
     
-    <h1>Woni Spotts Research</h1>
+    <!-- Header Nomenclature -->
+    <h1 class="archive-main-title">Woni Spotts Research</h1>
 
-    <ul class="pdf-list">
+    <!-- Subtitle Placement -->
+    <div class="archive-subtitle">
+      Field Logs and Ethnographic Records for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
+    </div>
+
+    <!-- Clean Master List of Your 10 Document Files with Space Code Fixes Built-In -->
+    <ul class="document-ledger">
       <li>
-        <a href="./Cuisine.pdf" target="_blank">Black Americans, Originators of Soul Food and Louisiana Creole Cuisines (PDF)</a>
+        <a href="./Cuisine.pdf" target="_blank">Black American Soul Food and Louisiana Creole</a>
       </li>
       <li>
-        <a href="./Naked Steps Chapter West Africa.pdf" target="_blank">Naked Steps Chapter: History of West Africa, Beauty and the Beasts (PDF)</a>
+        <a href="./Inventions.pdf" target="_blank">Black American Inventions</a>
+      </li>
+      <li>
+        <a href="./Sports.pdf" target="_blank">Black American Sports</a>
+      </li>
+      <li>
+        <a href="./ethnicity.pdf" target="_blank">Black American Ethnogenesis</a>
+      </li>
+      <li>
+        <a href="./humanitarianism.pdf" target="_blank">Black American Humanitarianism</a>
+      </li>
+      <li>
+        <a href="./music.pdf" target="_blank">Black American Music Genres</a>
+      </li>
+      <li>
+        <a href="./NS%20British%20Isles.pdf" target="_blank">Naked Steps Chapter British Isles</a>
+      </li>
+      <li>
+        <a href="./Naked%20Steps%20Chapter%20History%20of%20Australia.pdf" target="_blank">Naked Steps Chapter History of Australia</a>
+      </li>
+      <li>
+        <a href="./Naked%20Steps%20Chapter%20History%20of%20Japan.pdf" target="_blank">Naked Steps Chapter History of Japan</a>
+      </li>
+      <li>
+        <a href="./Naked%20Steps%20Chapter%20West%20Africa.pdf" target="_blank">Naked Steps Chapter West Africa</a>
       </li>
     </ul>
+
+    <!-- The Explorer Gateway Button -->
+    <div class="expedition-action-vault">
+      <a href="https://github.com" class="compass-emblem-badge" target="_blank">View the Research Archives (Link)</a>
+    </div>
 
   </div>
 
