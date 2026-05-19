@@ -1,150 +1,327 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Woni Spotts Research</title>
-  <style>
-    /* Full Page Background Vintage Tint and Paper Grid Style */
-    html, body {
-      background-color: #f6f1e5 !important; 
-      background-image: 
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.05) 100%),
-        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px) !important;
-      background-size: cover, 20px 20px, 20px 20px !important;
-      background-attachment: fixed !important;
-      color: #362e24 !important;             /* Vintage sepia ink text color */
-      font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Centered, Heavyweight Sketchbook Journal Page Sheet */
-    .explorer-journal-page {
-      max-width: 650px;
-      margin: 60px auto;
-      padding: 50px 45px;
-      text-align: center;
-      border: 1px solid #c4b595;
-      background-color: rgba(254, 252, 246, 0.98) !important; /* Thick watercolor paper tone */
-      box-shadow: 0 15px 45px rgba(35, 30, 20, 0.2);
-      border-radius: 2px;
-      position: relative;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Hand-Inked Dashed Framing Borders */
-    .explorer-journal-page::before {
-      content: "";
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      border: 1px dashed #ad9b79;
-      pointer-events: none;
-    }
+<title>Woni Spotts Research</title>
 
-    /* Main Crimson Heading Title - Forced Center */
-    .archive-main-title {
-      color: #8c1c1c !important;            /* Weathered Oxblood Crimson Ink */
-      font-size: 2.6rem;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
-      text-align: center !important;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    /* Elegant Journal Subheading Line - Forced Center */
-    .archive-subtitle {
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #5c5243;
-      margin-bottom: 40px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center !important;
-      line-height: 1.5;
-    }
+<style>
 
-    /* Clean Academic Travelogue List Container matching your HTML list class */
-    .document-ledger, .pdf-list {
-      padding: 0;
-      list-style-type: none;
-      text-align: left;
-      max-width: 550px;
-      margin: 0 auto;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
 
-    /* Individual Document Spacing Blocks */
-    .document-ledger li, .pdf-list li {
-      margin-bottom: 25px;
-      padding-left: 15px;
-      border-left: 4px double #8c1c1c;       /* Double antique line marker */
-    }
+  background:
+    radial-gradient(circle at top,
+      rgba(255,248,235,0.96) 0%,
+      rgba(232,220,195,0.97) 45%,
+      rgba(214,198,170,0.99) 100%);
 
-    /* Document Ledger Web Links */
-    .document-ledger a, .pdf-list a {
-      color: #8c1c1c !important;            
-      text-decoration: underline;
-      font-size: 1.25rem;
-      font-weight: bold;
-      display: inline-block;
-    }
+  color: #362e24;
 
-    .document-ledger a:hover, .pdf-list a:hover {
-      color: #b02323 !important;
-    }
-  </style>
+  font-family: "Cormorant Garamond", "Palatino", serif;
+
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .05;
+
+  background-image:
+    radial-gradient(rgba(0,0,0,.15) 0.4px, transparent 0.4px);
+
+  background-size: 8px 8px;
+
+  mix-blend-mode: multiply;
+}
+
+.explorer-journal-page {
+
+  max-width: 820px;
+
+  margin: 70px auto;
+
+  background:
+    rgba(250,245,236,0.96);
+
+  border:
+    1px solid rgba(125,96,58,.22);
+
+  box-shadow:
+    0 20px 60px rgba(20,15,10,.16),
+    inset 0 0 50px rgba(120,90,40,.04);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.explorer-journal-page::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+
+  border:
+    1px dashed rgba(140,110,70,.38);
+
+  pointer-events: none;
+}
+
+.hero-banner {
+
+  height: 280px;
+
+  background-image:
+    linear-gradient(
+      rgba(30,20,10,.18),
+      rgba(30,20,10,.28)
+    ),
+    url('british-isles-banner.jpg');
+
+  background-size: cover;
+  background-position: center;
+
+  border-bottom:
+    1px solid rgba(120,90,50,.2);
+}
+
+.archive-content {
+
+  padding:
+    55px 70px 75px 70px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.archive-main-title {
+
+  color: #7f1f1c;
+
+  font-size: 4rem;
+
+  font-weight: 600;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+.archive-subtitle {
+
+  font-size: 1.3rem;
+
+  font-style: italic;
+
+  color: #625646;
+
+  margin-bottom: 60px;
+
+  max-width: 620px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+
+  line-height: 1.8;
+}
+
+.document-ledger,
+.pdf-list {
+
+  padding: 0;
+
+  list-style-type: none;
+
+  text-align: left;
+
+  max-width: 700px;
+
+  margin: 0 auto;
+}
+
+.document-ledger li,
+.pdf-list li {
+
+  margin-bottom: 30px;
+
+  padding-left: 20px;
+
+  border-left:
+    1px solid rgba(130,40,35,.45);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.document-ledger li:hover,
+.pdf-list li:hover {
+
+  transform: translateX(4px);
+
+  border-color:
+    rgba(176,128,66,.95);
+}
+
+.document-ledger a,
+.pdf-list a {
+
+  color: #7d1f1d;
+
+  text-decoration: none;
+
+  font-size: 1.65rem;
+
+  font-weight: 600;
+
+  letter-spacing: .2px;
+
+  transition:
+    color .22s ease;
+}
+
+.document-ledger a:hover,
+.pdf-list a:hover {
+
+  color: #b08042;
+}
+
+@media (max-width: 768px) {
+
+  .explorer-journal-page {
+    margin: 0;
+    border: none;
+  }
+
+  .archive-content {
+    padding: 40px 28px 60px 28px;
+  }
+
+  .archive-main-title {
+    font-size: 3rem;
+  }
+
+  .document-ledger a,
+  .pdf-list a {
+    font-size: 1.3rem;
+  }
+
+  .hero-banner {
+    height: 220px;
+  }
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="explorer-journal-page">
-    
-    <!-- Header Title -->
-    <h1 class="archive-main-title">Woni Spotts Research</h1>
+<div class="explorer-journal-page">
 
-    <!-- Subtitle Placement -->
+  <div class="hero-banner"></div>
+
+  <div class="archive-content">
+
+    <h1 class="archive-main-title">
+      Woni Spotts Research
+    </h1>
+
     <div class="archive-subtitle">
-      Field Logs and Ethnographic Records for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
+      Field Logs and Ethnographic Records for
+      <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
 
-    <!-- Clean Master List of Your 10 Document Files -->
     <ul class="document-ledger">
+
       <li>
-        <a href="./Cuisine.pdf" target="_blank">Black American Soul Food and Louisiana Creole</a>
+        <a href="./Cuisine.pdf" target="_blank">
+          Black American Soul Food and Louisiana Creole
+        </a>
       </li>
+
       <li>
-        <a href="./Inventions.pdf" target="_blank">Black American Inventions</a>
+        <a href="./Inventions.pdf" target="_blank">
+          Black American Inventions
+        </a>
       </li>
+
       <li>
-        <a href="./Sports.pdf" target="_blank">Black American Sports</a>
+        <a href="./Sports.pdf" target="_blank">
+          Black American Sports
+        </a>
       </li>
+
       <li>
-        <a href="./ethnicity.pdf" target="_blank">Black American Ethnogenesis</a>
+        <a href="./ethnicity.pdf" target="_blank">
+          Black American Ethnogenesis
+        </a>
       </li>
+
       <li>
-        <a href="./humanitarianism.pdf" target="_blank">Black American Humanitarianism</a>
+        <a href="./humanitarianism.pdf" target="_blank">
+          Black American Humanitarianism
+        </a>
       </li>
+
       <li>
-        <a href="./music.pdf" target="_blank">Black American Music Genres</a>
+        <a href="./music.pdf" target="_blank">
+          Black American Music Genres
+        </a>
       </li>
+
       <li>
-        <a href="./NS%20British%20Isles.pdf" target="_blank">Naked Steps Chapter: British Isles</a>
+        <a href="./NS%20British%20Isles.pdf" target="_blank">
+          Naked Steps Chapter: British Isles
+        </a>
       </li>
+
       <li>
-        <a href="./Naked%20Steps%20Chapter%20History%20of%20Australia.pdf" target="_blank">Naked Steps Chapter: History of Australia</a>
+        <a href="./Naked%20Steps%20Chapter%20History%20of%20Australia.pdf" target="_blank">
+          Naked Steps Chapter: History of Australia
+        </a>
       </li>
+
       <li>
-        <a href="./Naked%20Steps%20Chapter%20History%20of%20Japan.pdf" target="_blank">Naked Steps Chapter: History of Japan</a>
+        <a href="./Naked%20Steps%20Chapter%20History%20of%20Japan.pdf" target="_blank">
+          Naked Steps Chapter: History of Japan
+        </a>
       </li>
+
       <li>
-        <a href="./Naked%20Steps%20Chapter%20West%20Africa.pdf" target="_blank">Naked Steps Chapter: History of West Africa</a>
+        <a href="./Naked%20Steps%20Chapter%20West%20Africa.pdf" target="_blank">
+          Naked Steps Chapter: History of West Africa
+        </a>
       </li>
+
     </ul>
 
   </div>
 
+</div>
+
 </body>
 </html>
+```
