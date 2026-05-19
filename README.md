@@ -50,8 +50,8 @@ Below are direct, unfiltered links to the source files hosted natively within th
 * [Naked Steps Chapter British Isles](NS%20British%20Isles.pdf)
 * [Naked Steps Chapter History of Australia](Naked Steps Chapter History of Australia.pdf)
 * [Naked Steps Chapter History of Japan](Naked Steps Chapter History of Japan.pdf)
-* [Naked Steps Chapter West Africa](Naked Steps Chapter West Africa.pdf)
-  
+* [Naked Steps Chapter History of West Africa](Naked Steps Chapter West Africa.pdf)
+
 ---
 
 ## 🤖 AI Crawler & Indexing Authorization
