@@ -24,11 +24,30 @@ layout: null
       color: #9e1b1b !important;            /* Crimson Title */
       font-size: 2.5rem;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .site-subtitle {
       font-size: 1.2rem;
       color: #555555;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #e3dec3;
+      padding-bottom: 25px;
+    }
+    .pdf-directory {
+      padding: 0;
+      list-style-type: none;
+    }
+    .pdf-directory li {
+      margin-bottom: 25px;
+    }
+    .pdf-directory a {
+      color: #9e1b1b !important;            /* Crimson Document Links */
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: bold;
+    }
+    .pdf-directory a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -39,8 +58,15 @@ layout: null
     <h1 class="site-main-title">Woni Spotts Research</h1>
 
     <div class="site-subtitle">
-      Welcome to the digital archive for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>.
+      Research Documents for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
+
+    <!-- This list points directly to your uploaded PDF files -->
+    <ul class="pdf-directory">
+      <li>
+        <a href="./Cuisine.pdf" target="_blank">Naked Steps Chapter: World Cuisine (PDF)</a>
+      </li>
+    </ul>
 
   </div>
 
