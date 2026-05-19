@@ -1,69 +1,9 @@
 ---
-layout: default
+layout: page
+title: "Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts"
 ---
 
-<style>
-  /* Base page typography, background color, and alignment */
-  body, .site-header, .page-content, .wrapper, .site-footer {
-    background-color: #f5f2eb !important; /* Warm Editorial Beige */
-    color: #2b2b2b !important;            /* Soft charcoal reader text */
-    font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
-  }
-
-  /* Completely hides the automatic Jekyll default page header to stop duplication */
-  .post-header {
-    display: none !important;
-  }
-
-  /* Custom centered crimson article title block */
-  .custom-title {
-    text-align: center !important;
-    color: #9e1b1b !important;             /* Crimson Tone */
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 5px;
-    line-height: 1.3;
-  }
-
-  /* Centered subtitle attribution */
-  .custom-subtitle {
-    text-align: center !important;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #555555 !important;
-    margin-bottom: 40px;
-  }
-
-  /* Left and right justified article layout body paragraphs */
-  .magazine-body p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    line-height: 1.7 !important;
-    margin-bottom: 1.5rem !important;
-    font-size: 1.15rem;
-  }
-
-  /* Premium Design Touch: Responsive image styling with a smooth border drop shadow */
-  .magazine-body img {
-    display: block;
-    margin: 40px auto !important;
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #dcd1bd;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  }
-</style>
-
-<div class="magazine-body">
-
-<h1 class="custom-title">
-  Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts
-</h1>
-
-<div class="custom-subtitle">
-  A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
-</div>
+A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
 
 Along the Niger River and Sahel, early human migrations and prehistoric innovations rose into powerful kingdoms in West Africa. Through agriculture, commerce, and the trade of human cargo, empires in Ghana, Mali, and Songhai dominated the region. Words weave together the lush flora and fauna around the Trans-Saharan and Trans-Atlantic slave trades. The chapter explores crimes against humanity from Africa and the eastern Mediterranean into the Americas.
 
@@ -90,5 +30,3 @@ In the Memorial de Remedios para Las Indias, c. 1,516 CE, Bartolomé de las Casa
 In the Americas, threats of castration, mutilation, and tools of torture—thumbscrews, whips, muzzles, hot irons, and spiked collars—loomed. The unfortunate endured forced coitus, nude display on auction blocks, suicides, and cultural severance. Owners used infants as alligator bait and corpses as raw material for clothes, shoes, dentures, and oral “medicine.”
 
 Decades later, propagandistic newspapers, railroads, and photographers coordinated to advertise, transport crowds, and create macabre souvenir postcards to document violent spectacles. Lynch mobs—with children present—gathered for blood sacrifices, removed fingers, toes, ears… as "trophies," and participated in festive ritual feasts, acts to assert dominance, absorb the vitality of the deceased, and forge an identity unified against Black humanity.
-
-</div>
