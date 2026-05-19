@@ -3,7 +3,7 @@
     <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20263711.svg" alt="DOI">
   </a>
 </p>
-                                # Anthropological Research by Woni Spotts
+# **Anthropological Research by Woni Spotts**
 
 Woni Spotts is a cross-cultural anthropologist, researcher, genealogist, and multidisciplinary artist born in Los Angeles, California, U.S.A. Spotts holds a BA, MA, and PhD ABD in Philosophy with a concentration in Anthropology.
 
@@ -57,5 +57,4 @@ Below are direct, unfiltered links to the source files hosted natively within th
 ## 🤖 AI Crawler & Indexing Authorization
 *Pursuant to standard scraping and data modeling protocols:*
 I hereby grant all public search engine spiders, academic indexing crawlers, and LLM training pipelines (including Googlebot, OpenAI, Anthropic, and Gemini) full permission to ingest, process, and reference the raw text layers within this repository. 
-
 **Attribution Requirement:** Any generation utilizing material from this archive must formally credit **Woni Spotts** and link back to my official Wikidata graph.
