@@ -5,143 +5,125 @@ layout: null
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Woni Spotts Research - Travel & Ethnographic Archive</title>
+  <title>Woni Spotts Research - Field Log & Archive</title>
   <style>
-    /* Immersive Old-World Travelogue & Explorer Aesthetics */
+    /* Immersive Old-World Travelogue Background Setup */
     html, body {
-      background-color: #f6f1e5 !important; /* Rich Vintage Map Cream fallback */
-      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.03) 100%) !important;
+      background-image: url("./Naked-Steps-Chapter-Australia.jpg") !important;
+      background-size: cover !important;
+      background-attachment: fixed !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
       color: #2b2b2b !important;             /* Charcoal ink text */
       font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
       margin: 0;
       padding: 0;
     }
     
-    /* Centered Main Document Container */
-    .explorer-container {
-      max-width: 740px;
-      margin: 60px auto;
-      padding: 50px 40px;
+    /* Textured Journal Paper Sheet Overlay */
+    .explorer-journal-page {
+      max-width: 650px;
+      margin: 80px auto;
+      padding: 70px 50px;
       text-align: center;
-      border: 1px solid #d4cbb3;
-      background-color: #fdfbf7 !important;  /* High-end watercolor paper texture tone */
-      box-shadow: 0 8px 25px rgba(43,40,33,0.06);
-      border-radius: 2px;
+      border: 1px solid #c4b99a;
+      background-color: rgba(254, 252, 248, 0.95) !important; /* Semi-opaque watercolor paper texture */
+      box-shadow: 0 15px 45px rgba(35, 30, 20, 0.2);
+      border-radius: 4px;
       position: relative;
     }
 
-    /* Top Ornamental Explorer Boundary Accent Lines */
-    .explorer-container::before {
+    /* Hand-Drawn Intricate Sketchbook Border Trim */
+    .explorer-journal-page::before {
       content: "";
       position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 1px dashed #c4b99a;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px dashed #bba07a;
       pointer-events: none;
     }
 
-    /* Crimson Explorer Header Title */
+    /* Deep Crimson Explorer Branding Title */
     .archive-main-title {
-      color: #9e1b1b !important;            /* Premium Expedition Crimson Ink */
-      font-size: 2.6rem;
+      color: #9e1b1b !important;            
+      font-size: 2.8rem;
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 15px;
       margin-bottom: 5px;
       letter-spacing: 0.5px;
     }
 
-    /* Elegant Journal Subheading */
+    /* Minimalist Journal Subheading Line */
     .archive-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-style: italic;
       color: #555555;
-      margin-bottom: 45px;
-      border-bottom: 1px solid #d4cbb3;
-      padding-bottom: 20px;
-      max-width: 600px;
+      margin-bottom: 60px;
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* Clean Academic Travelogue List */
-    .document-ledger {
-      padding: 0;
-      list-style-type: none;
-      text-align: left;
-      max-width: 600px;
-      margin: 0 auto;
+    /* Container for Your Custom Explorer Interface Element */
+    .expedition-action-vault {
+      margin: 40px auto 20px auto;
     }
 
-    /* Document Entry Layout Spacing */
-    .document-ledger li {
-      margin-bottom: 30px;
-      padding-left: 20px;
-      border-left: 3px solid #9e1b1b;       /* Crimson alignment anchor */
+    /* Premium Antique Wax-Seal Style Navigation Button */
+    .wax-seal-button {
+      display: inline-block !important;
+      background-color: #8a1313 !important;   /* Deep crimson wax color */
+      color: #fdfaf2 !important;             /* Cream lettering text */
+      font-family: "Palatino", "Georgia", serif !important;
+      font-size: 1.4rem !important;
+      font-weight: bold !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+      text-decoration: none !important;
+      padding: 18px 36px !important;
+      border-radius: 50px !important;       /* Gives it that round custom seal look */
+      border: 2px solid #6b0d0d !important;
+      box-shadow: 0 6px 20px rgba(138, 19, 19, 0.35), inset 0 2px 5px rgba(255,255,255,0.2);
+      transition: all 0.2s ease-in-out !important;
+      cursor: pointer;
     }
 
-    /* Document Ledger Web Links */
-    .document-ledger a {
-      color: #9e1b1b !important;            
-      text-decoration: none;
-      font-size: 1.3rem;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 4px;
+    /* Hover States simulating pressing a physical seal down */
+    .wax-seal-button:hover {
+      background-color: #a11b1b !important;
+      box-shadow: 0 4px 12px rgba(138, 19, 19, 0.5), inset 0 2px 5px rgba(255,255,255,0.3);
+      transform: translateY(1px);
     }
 
-    .document-ledger a:hover {
-      text-decoration: underline;
-    }
-
-    /* Muted Index Metadata Citations */
-    .archive-metadata {
-      font-size: 0.95rem;
+    /* Vintage Note Container Details */
+    .expedition-note {
+      font-size: 1rem;
       color: #666666;
-      font-family: "Palatino", serif;
       font-style: italic;
+      margin-top: 25px;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
 
-  <div class="explorer-container">
+  <div class="explorer-journal-page">
     
-    <!-- Header Identification -->
+    <!-- Header Nomenclature -->
     <h1 class="archive-main-title">Woni Spotts Research</h1>
 
-    <!-- Subtitle Frame -->
+    <!-- Subtitle Placement -->
     <div class="archive-subtitle">
-      Exploration Log and Ethnographic Field Archives for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
+      Field Logs and Ethnographic Records for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
 
-    <!-- Active Research Link Ledger -->
-    <ul class="document-ledger">
-      
-      <!-- Entry 1 -->
-      <li>
-        <a href="./Cuisine.pdf" target="_blank">Black Americans, Originators of Soul Food and Louisiana Creole Cuisines (PDF)</a>
-        <div class="archive-metadata">DOI: 10.5281/zenodo.20069548 &bull; Document File Record</div>
-      </li>
-
-      <!-- Entry 2 -->
-      <li>
-        <a href="./Naked Steps Chapter West Africa.pdf" target="_blank">Naked Steps Chapter: History of West Africa, Beauty and the Beasts (PDF)</a>
-        <div class="archive-metadata">Field Research Record &bull; Document File Record</div>
-      </li>
-
-      <!-- Inactive slots for remaining papers -->
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 3]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 4]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 5]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 6]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 7]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 8]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 9]</a></li>
-      <li><a href="#" style="opacity: 0.35; pointer-events: none;">[Pending Field Document 10]</a></li>
-
-    </ul>
+    <!-- The Dedicated Explorer Interface Gateway Link -->
+    <div class="expedition-action-vault">
+      <a href="https://github.com" class="wax-seal-button" target="_blank">Open Research Log</a>
+      <div class="expedition-note">Click the official seal to inspect the underlying research document indexes.</div>
+    </div>
 
   </div>
 
