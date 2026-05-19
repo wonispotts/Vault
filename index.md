@@ -42,31 +42,6 @@ layout: null
       border-bottom: 1px solid #e3dec3;
       padding-bottom: 25px;
     }
-
-    /* Minimalist Directory List Container */
-    .chapter-directory {
-      margin-top: 40px;
-      padding: 0;
-      list-style-type: none;
-    }
-
-    /* Directory Spacing and Links */
-    .chapter-directory li {
-      margin-bottom: 25px;
-    }
-
-    .chapter-directory a {
-      color: #9e1b1b !important;            /* Crimson Text Links */
-      text-decoration: none;
-      font-size: 1.35rem;
-      font-weight: bold;
-      transition: color 0.2s ease;
-    }
-
-    .chapter-directory a:hover {
-      color: #cc2424 !important;            /* Brighter red on hover */
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -80,19 +55,6 @@ layout: null
     <div class="site-subtitle">
       The digital archive and magazine portal for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
-
-    <!-- Clean, Working List of Your Existing Chapters -->
-    <ul class="chapter-directory">
-      <li>
-        <a href="./first-article.html">Naked Steps Chapter: History of West Africa, Beauty and the Beasts</a>
-      </li>
-      <li>
-        <a href="./naked-steps-chapter-history-of-japan-and-korea.html">Naked Steps Chapter: History of Japan and Korea</a>
-      </li>
-      <li>
-        <a href="./naked-steps-chapter-history-of-australia.html">Naked Steps Chapter: History of Australia</a>
-      </li>
-    </ul>
 
   </div>
 
