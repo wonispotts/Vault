@@ -4,40 +4,39 @@
   <meta charset="UTF-8">
   <title>Woni Spotts Research</title>
   <style>
-    /* Full Page Background Wrapped in Your Actual Old Map Artwork Texture */
-   html, body {
-  background-image: url("https://transparenttextures.com") !important;
-  background-color: #f6f1e5 !important; 
-  font-family: "Palatino", serif !important;
-  margin: 0;
-  padding: 0;
-}
-
+    /* Full Page Background Vintage Tint and Paper Grid Style */
+    html, body {
+      background-color: #f6f1e5 !important; 
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.05) 100%),
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px) !important;
+      background-size: cover, 20px 20px, 20px 20px !important;
+      background-attachment: fixed !important;
+      color: #362e24 !important;             /* Vintage sepia ink text color */
+      font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
+      margin: 0;
+      padding: 0;
     }
     
-    /* Weathered, Explorer Journal Overlay Sheet */
+    /* Centered, Heavyweight Sketchbook Journal Page Sheet */
     .explorer-journal-page {
-     .explorer-journal-page {
-  max-width: 650px;
-  margin: 60px auto;
-  padding: 50px 45px;
-  text-align: center;
-  border: 1px solid #c4b595;
-  background-color: rgba(254, 252, 246, 0.97) !important; 
-  box-shadow: 0 15px 50px rgba(35, 30, 20, 0.25);
-  border-radius: 2px;
-  position: relative;
-}
-.explorer-journal-page::before {
-  content: "";
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  border: 1px dashed #ad9b79;
-  pointer-events: none;
-}
+      max-width: 650px;
+      margin: 60px auto;
+      padding: 50px 45px;
+      text-align: center;
+      border: 1px solid #c4b595;
+      background-color: rgba(254, 252, 246, 0.98) !important; /* Thick watercolor paper tone */
+      box-shadow: 0 15px 45px rgba(35, 30, 20, 0.2);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    /* Hand-Inked Dashed Framing Borders */
+    .explorer-journal-page::before {
+      content: "";
+      position: absolute;
+      top: 18px;
       left: 18px;
       right: 18px;
       bottom: 18px;
@@ -45,17 +44,18 @@
       pointer-events: none;
     }
 
-    /* Crimson Explorer Heading Title */
+    /* Main Crimson Heading Title - Forced Center */
     .archive-main-title {
       color: #8c1c1c !important;            /* Weathered Oxblood Crimson Ink */
-    .document-ledger li {
-  margin-bottom: 25px;
-  padding-left: 15px;
-  border-left: 4px double #8c1c1c;
-}
+      font-size: 2.6rem;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      text-align: center !important;
     }
 
-    /* Elegant Journal Subheading Line */
+    /* Elegant Journal Subheading Line - Forced Center */
     .archive-subtitle {
       font-size: 1.2rem;
       font-style: italic;
@@ -64,10 +64,12 @@
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
+      text-align: center !important;
+      line-height: 1.5;
     }
 
-    /* Clean Academic Travelogue List Container */
-    .document-ledger {
+    /* Clean Academic Travelogue List Container matching your HTML list class */
+    .document-ledger, .pdf-list {
       padding: 0;
       list-style-type: none;
       text-align: left;
@@ -76,14 +78,14 @@
     }
 
     /* Individual Document Spacing Blocks */
-    .document-ledger li {
+    .document-ledger li, .pdf-list li {
       margin-bottom: 25px;
       padding-left: 15px;
-      border-left: 3px solid #8c1c1c;       /* Crimson alignment anchor */
+      border-left: 4px double #8c1c1c;       /* Double antique line marker */
     }
 
     /* Document Ledger Web Links */
-    .document-ledger a {
+    .document-ledger a, .pdf-list a {
       color: #8c1c1c !important;            
       text-decoration: underline;
       font-size: 1.25rem;
@@ -91,7 +93,7 @@
       display: inline-block;
     }
 
-    .document-ledger a:hover {
+    .document-ledger a:hover, .pdf-list a:hover {
       color: #b02323 !important;
     }
   </style>
@@ -100,7 +102,7 @@
 
   <div class="explorer-journal-page">
     
-    <!-- Header Nomenclature -->
+    <!-- Header Title -->
     <h1 class="archive-main-title">Woni Spotts Research</h1>
 
     <!-- Subtitle Placement -->
