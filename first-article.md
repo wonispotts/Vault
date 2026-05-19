@@ -1,33 +1,14 @@
 ---
 layout: page
-title: "Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts"
 ---
 
-<style>
-  /* Centers all title elements, headers, and navigation menus */
-  .site-header, .site-title, .site-nav, .post-header, .post-title, header {
-    text-align: center !important;
-    float: none !important;
-  }
-  .site-nav {
-    display: inline-block !important;
-  }
+<h1 style="text-align: center; color: #8b0000; font-family: sans-serif; margin-bottom: 20px;">
+  Naked Steps Chapter:<br>History of West Africa, Beauty and the Beasts
+</h1>
 
-  /* Completely overrides all theme layers with your soft cream color */
-  html, body, .site-header, .page-content, .wrapper, .post-content, p {
-    background-color: #fcfaf2 !important;
-    color: #2b2b2b !important;
-  }
-
-  /* Sets your primary heading title color to deep crimson */
-  .site-title, .post-title, h1 {
-    color: #8b0000 !important;
-  }
-</style>
-
-    color: #8b0000 !important;            /* Deep crimson red for titles */
-  }
-</style>
+<div style="text-align: center; margin-bottom: 30px; font-weight: bold;">
+  A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
+</div>
 
 A chapter from Naked Steps: A Timeless Panoramic Ancestral Odyssey, a book by Woni Spotts
 
