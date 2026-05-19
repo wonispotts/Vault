@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +14,36 @@ html, body {
   margin: 0;
   padding: 0;
 
-  background:
-    radial-gradient(circle at top,
-      rgba(255,248,235,0.96) 0%,
-      rgba(232,220,195,0.97) 45%,
-      rgba(214,198,170,0.99) 100%);
+  background-color: #e7dcc7;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.08), rgba(0,0,0,.04)),
+    url('paper-texture.jpg'),
+    url('watercolor-stains.png');
+
+  background-blend-mode:
+    soft-light,
+    multiply,
+    normal;
+
+  background-size:
+    cover,
+    900px,
+    cover;
+
+  background-repeat:
+    no-repeat,
+    repeat,
+    no-repeat;
+
+  background-attachment:
+    fixed,
+    fixed,
+    fixed;
 
   color: #362e24;
 
   font-family: "Cormorant Garamond", "Palatino", serif;
-
-  background-attachment: fixed;
 }
 
 body::before {
@@ -36,10 +54,10 @@ body::before {
 
   pointer-events: none;
 
-  opacity: .05;
+  opacity: .04;
 
   background-image:
-    radial-gradient(rgba(0,0,0,.15) 0.4px, transparent 0.4px);
+    radial-gradient(rgba(0,0,0,.15) 0.5px, transparent 0.5px);
 
   background-size: 8px 8px;
 
@@ -53,7 +71,10 @@ body::before {
   margin: 70px auto;
 
   background:
-    rgba(250,245,236,0.96);
+    rgba(248,244,236,.82);
+
+  backdrop-filter:
+    blur(1.5px);
 
   border:
     1px solid rgba(125,96,58,.22);
@@ -79,14 +100,14 @@ body::before {
   bottom: 22px;
 
   border:
-    1px dashed rgba(140,110,70,.38);
+    1px dashed rgba(140,110,70,.35);
 
   pointer-events: none;
 }
 
 .hero-banner {
 
-  height: 280px;
+  height: 300px;
 
   background-image:
     linear-gradient(
@@ -250,7 +271,8 @@ body::before {
     </h1>
 
     <div class="archive-subtitle">
-    <i>Research from Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
+      Field Logs and Ethnographic Records for
+      <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
     </div>
 
     <ul class="document-ledger">
@@ -323,4 +345,3 @@ body::before {
 
 </body>
 </html>
-```
