@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://w3.org">
+  <channel>
+    <title>Woni Spotts Research</title>
+    <description>Anthropological research and book chapters from Naked Steps: A Timeless Panoramic Ancestral Odyssey.</description>
+    <link>https://wonispotts.github.io/Vault/</link>
+    <atom:link href="https://github.io" rel="self" type="application/rss+xml" />
+
+    <!-- Chapter 1: West Africa -->
+    <item>
+      <title>Naked Steps Chapter: History of West Africa, Beauty and the Beasts</title>
+      <description>Along the Niger River and Sahel, early human migrations and prehistoric innovations rose into powerful kingdoms in West Africa. Through agriculture, commerce, and the trade of human cargo, empires in Ghana, Mali, and Songhai dominated the region.</description>
+      <link>https://github.io</link>
+      <guid>https://github.io</guid>
+    </item>
+
+    <!-- Chapter 2: Japan and Korea -->
+    <item>
+      <title>Naked Steps Chapter: History of Japan and Korea</title>
+      <description>Ancient Northeast Asians and coastal Ancestral Australo-Melanesians shaped early populations across the Japanese archipelago. Proto-Koreanic and proto-Japonic cultures emerged through agriculture, metallurgy, and spiritual traditions.</description>
+      <link>https://github.io</link>
+      <guid>https://github.io</guid>
+    </item>
+
+    <!-- Chapter 3: Australia -->
+    <item>
+      <title>Naked Steps Chapter: History of Australia</title>
+      <description>The chapter opens with a journey by Homo sapiens from East Africa through Eurasia and Southeast Asia. In the Sahul, a prehistoric supercontinent, Ancestral Australo-Melanesians carried the genetics of Neanderthals and Denisovans.</description>
+      <link>https://github.io</link>
+      <guid>https://github.io</guid>
+    </item>
+
+  </channel>
+</rss>
