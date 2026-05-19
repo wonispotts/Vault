@@ -1,132 +1,64 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Woni Spotts Research - Explorer Archive</title>
+  <title>Woni Spotts Research</title>
   <style>
-    /* Full Page Background Wrapped in a True High-Resolution Vintage Parchment Map Texture Pattern */
     html, body {
-      background-image: url("https://transparenttextures.com") !important;
-      background-color: #f3ecdb !important; /* Authentic aged travelogue map parchment hue */
-      background-attachment: fixed !important;
+      background-color: #fdfaf2 !important; 
       color: #2b2b2b !important;             
-      font-family: "Palatino", "Palatino Linotype", "Georgia", serif !important;
+      font-family: "Palatino", serif !important;
       margin: 0;
       padding: 0;
     }
-    
-    /* Elegant, Heavyweight Sketchbook Entry Overlay Sheet */
-    .explorer-journal-sheet {
-      max-width: 650px;
-      margin: 90px auto;
-      padding: 70px 50px;
+    .main-container {
+      max-width: 740px;
+      margin: 60px auto;
+      padding: 40px;
       text-align: center;
-      border: 1px solid #c8bc9f;
-      background-color: #fdfbf7 !important;  /* Premium heavy watercolor artist paper tone */
-      box-shadow: 
-        0 15px 45px rgba(43, 38, 28, 0.18), 
-        inset 0 0 35px rgba(184, 163, 127, 0.12); /* Aged edge shading shadows */
-      border-radius: 3px;
-      position: relative;
     }
-
-    /* Antique Hand-Inked Dashed Framing Detailing */
-    .explorer-journal-sheet::before {
-      content: "";
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      border: 1px dashed #ad9b79;
-      pointer-events: none;
+    h1 {
+      color: #9e1b1b !important;            
+      font-size: 2.5rem;
+      margin-bottom: 40px;
     }
-
-    /* Deep Weathered Oxblood Crimson Title */
-    .archive-main-header {
-      color: #8c1c1c !important;            /* Premium Expedition Oxblood Crimson Ink */
-      font-size: 2.8rem;
+    .pdf-list {
+      padding: 0;
+      list-style-type: none;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .pdf-list li {
+      margin-bottom: 25px;
+      padding-left: 15px;
+      border-left: 3px solid #9e1b1b;
+    }
+    .pdf-list a {
+      color: #9e1b1b !important;            
+      text-decoration: underline;
+      font-size: 1.3rem;
       font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
-    }
-
-    /* Minimalist Journal Subheading */
-    .archive-description {
-      font-size: 1.25rem;
-      font-style: italic;
-      color: #5c5243;
-      margin-bottom: 55px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Action Container */
-    .expedition-action-vault {
-      margin: 40px auto 20px auto;
-    }
-
-    /* Antique Hand-Stamped Explorer Compass Emblem Navigation Badge */
-    .compass-emblem-badge {
-      display: inline-block !important;
-      text-decoration: none !important;
-      color: #8c1c1c !important;            /* Crimson ink lettering */
-      font-family: "Palatino", "Georgia", serif !important;
-      font-size: 1.25rem !important;
-      font-weight: bold !important;
-      text-transform: uppercase !important;
-      letter-spacing: 2px !important;
-      padding: 22px 32px !important;
-      border-radius: 4px !important;        
-      border: 1px solid #ad9b79 !important; /* Instrument frame detailing */
-      background-color: #fdfbf7 !important; /* Aged bone paper background padding */
-      box-shadow: 0 8px 20px rgba(40,35,25,0.08);
-      transition: all 0.2s ease-in-out !important;
-      cursor: pointer;
-    }
-
-    /* Mechanical Compass Anchor Icon */
-    .compass-emblem-badge::before {
-      content: "🧭 ";                       
-      font-size: 1.4rem;
-      vertical-align: middle;
-      margin-right: 8px;
-
-/* Hover press animation mimicking an ink stamp interaction */
-    }<a href="https://github.io" class="compass-emblem-badge">Examine Research Ledger</a>
-      background-color: #f7f3e8 !important;
-      border-color: #8c1c1c !important;
-    }
-
-    /* Vintage Footnote Details */
-    .expedition-footnote {
-      font-size: 1rem;
-      color: #6e6350;
-      font-style: italic;
-      margin-top: 30px;
-      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
 
-  <div class="explorer-journal-sheet">
+  <div class="main-container">
     
-    <!-- Header Nomenclature -->
-    <h1 class="archive-main-header">Woni Spotts Research</h1>
+    <h1>Woni Spotts Research</h1>
 
-    <!-- Subtitle Placement -->
-    <div class="archive-description">
-      Field Logs and Ethnographic Records for <i>Naked Steps: A Timeless Panoramic Ancestral Odyssey</i>
-    </div>
-
-    <!-- The Explorer Gateway Interface Button -->
-    <div class="expedition-action-vault">
-      <a href="https://github.com" class="compass-emblem-badge" target="_blank">Examine Research Ledger</a>
-      <div class="expedition-footnote">Break the ledger seal to inspect the underlying research log archives.</div>
-    </div>
+    <ul class="pdf-list">
+      <li>
+        <a href="./Cuisine.pdf" target="_blank">Black Americans, Originators of Soul Food and Louisiana Creole Cuisines (PDF)</a>
+      </li>
+      <li>
+        <a href="./Naked Steps Chapter West Africa.pdf" target="_blank">Naked Steps Chapter: History of West Africa, Beauty and the Beasts (PDF)</a>
+      </li>
+    </ul>
 
   </div>
 
