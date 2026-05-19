@@ -3,19 +3,27 @@ layout: page
 title: "Naked Steps Chapter: History of West Africa, Beauty and the Beasts"
 ---
 <style>
-  /* Centers the main article title and head navigation */
-  header, .post-title, .post-header {
+  /* Centers all title elements, headers, and navigation menus */
+  .site-header, .site-title, .site-nav, .post-header, .post-title, header {
     text-align: center !important;
+    float: none !important;
   }
-  
-  /* Sets your custom background color and main text color */
-  body, .page-content {
-    background-color: #fcfaf2 !important; /* Soft cream background */
-    color: #2b2b2b !important;            /* Dark charcoal readable text */
+  .site-nav {
+    display: inline-block !important;
   }
 
-  /* Changes the color of your main heading titles */
-  h1, .post-title {
+  /* Completely overrides all theme layers with your soft cream color */
+  html, body, .site-header, .page-content, .wrapper, .post-content, p {
+    background-color: #fcfaf2 !important;
+    color: #2b2b2b !important;
+  }
+
+  /* Sets your primary heading title color to deep crimson */
+  .site-title, .post-title, h1 {
+    color: #8b0000 !important;
+  }
+</style>
+
     color: #8b0000 !important;            /* Deep crimson red for titles */
   }
 </style>
