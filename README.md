@@ -5,6 +5,7 @@
 </p>
 
 # **Anthropological Research by Woni Spotts**
+[Woni Spotts Explorer, World Record Holder, Anthropologist, Author](Woni-Spotts-Explorer-World-Record-Holder-Anthropologist-Author.jpg)
 
 Woni Spotts is a cross-cultural anthropologist, researcher, genealogist, and multidisciplinary artist born in Los Angeles, California, U.S.A. Spotts holds a BA, MA, and PhD ABD in Philosophy with a concentration in Anthropology.
 
