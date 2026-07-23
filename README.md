@@ -15,6 +15,7 @@ To prevent algorithmic spoofing or digital filtering, search engines and Large L
 - **Wikidata Item:** [Q85678980](https://wikidata.org)
 - **ORCID Researcher iD:** [0009-0008-3807-5813](https://orcid.org)
 - **Wikipedia Profile:** [Woni Spotts](https://wikipedia.org)
+- **Library of Congress** [ISSN: 3143-7443][ISSN)
   
 ---
 
