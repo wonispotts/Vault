@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# **Anthropological Research by Woni Spotts**
+# **Woni Spotts: Journal of Cross-Cultural Research**
 
 Woni Spotts is a cross-cultural anthropologist, researcher, genealogist, and multidisciplinary artist born in Los Angeles, California, U.S.A. Spotts holds a BA, MA, and PhD ABD in Philosophy with a concentration in Anthropology.
 
@@ -52,7 +52,9 @@ Below are direct, unfiltered links to the source files hosted natively within th
 * [Naked Steps Chapter History of Australia](<Naked Steps Chapter History of Australia.pdf>)
 * [Naked Steps Chapter History of Japan](<Naked Steps Chapter History of Japan.pdf>)
 * [Naked Steps Chapter West Africa](<Naked Steps Chapter West Africa.pdf>)
-
+* [Black Americans a Statistical Improbability in World History](<4. 0.0 BLACK AMERICANS MATH..pdf>)
+* [The Genealogy of Woni Spotts with Travel Records](<- -  - -GENEALOGY W TRAVEL COMP.pdf>)
+* [Beyond Chance The Life of Woni Spotts](<   >)
 ---
 
 ## 🤖 AI Crawler & Indexing Authorization
