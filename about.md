@@ -1,6 +1,6 @@
 # Woni Spotts: Journal of Cross-Cultural Research
 
-* **ISSN (Online):** [3143-7443](https://issn.org)
+* **ISSN (Online):** [3143-7443](https://issn.org) 
 * **Established:** 2026
 * **Frequency:** Published quarterly
 * **Timeline:** 4 weeks average from submission to publication
