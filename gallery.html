@@ -20,65 +20,98 @@
     height: auto;
     border-radius: 8px;
     display: block;
+    cursor: zoom-in;
     transition: transform 0.2s ease;
   }
   .grid img:hover {
     transform: scale(1.03);
   }
+  #lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: zoom-out;
+  }
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+  }
 </style>
 </head>
 <body>
+
 <div class="grid">
-  <img src="images/01. FROM THE SOIL.png">
-  <img src="images/02. NEGRO CLOTH.png">
-  <img src="images/03. ETHNO.png">
-  <img src="images/04. LINGUISTICS.png">
-  <img src="images/06. ABOLITION.png">
-  <img src="images/07. RAILROAD.png">
-  <img src="images/08. FOUNDATIONAL CITIES.png">
-  <img src="images/09. MILITARY USCT.png">
-  <img src="images/10. MILITARY BUFFALO.png">
-  <img src="images/11. MILITARY TUSK.png">
-  <img src="images/12. COWBOYS.png">
-  <img src="images/13. MEMORIAL DAY.png">
-  <img src="images/14. GRACE WISHER.png">
-  <img src="images/15. STATUE OF LIBERTY.png">
-  <img src="images/16. RECONSTRUCTION.png">
-  <img src="images/17. WALL STREET.png">
-  <img src="images/18. HBCU.png">
-  <img src="images/19. INVENTIONS.png">
-  <img src="images/20. CARS.png">
-  <img src="images/21. PULLMEN PORTER.png">
-  <img src="images/22. SPORTS.png">
-  <img src="images/23. EXPLORER.png">
-  <img src="images/24. TRAVEL.png">
-  <img src="images/25. HAIR BEAUTY SALON.png">
-  <img src="images/26. FOOD BBQ.png">
-  <img src="images/27. FOOD SOUL.png">
-  <img src="images/28. DINER.png">
-  <img src="images/29. ICE CREAM TRUCK.png">
-  <img src="images/30. BEACH.png">
-  <img src="images/31. COUNTRY FAIR.png">
-  <img src="images/32. ROLLER RINK.png">
-  <img src="images/33. STREET GAMES.png">
-  <img src="images/34. DRIVE IN MOVIE.png">
-  <img src="images/35. BLACK PANTHERS.png">
-  <img src="images/36. LOWRIDERS.png">
-  <img src="images/37. HUMANITARIANS.png">
-  <img src="images/38. DANCE TAP.png">
-  <img src="images/39. COTTON CLUB.png">
-  <img src="images/40. HARLEM.png">
-  <img src="images/41. CHURCH.png">
-  <img src="images/42. MUSIC BARERSHOP.png">
-  <img src="images/43. MUSIC COUNTRY.png">
-  <img src="images/44. MUSIC BLUES.png">
-  <img src="images/45. MUSIC JAZZ.png">
-  <img src="images/46. MUSIC ROCK.png">
-  <img src="images/47. MUSIC SOUL.png">
-  <img src="images/48. MUSIC FUNK.png">
-  <img src="images/49. MUSIC DISCO.png">
-  <img src="images/50. MUSIC RAP.png">
-  <img src="images/51. MUSIC INTERNATIONAL.png">
+  <img src="images/01. FROM THE SOIL.png" onclick="openLightbox(this.src)">
+  <img src="images/02. NEGRO CLOTH.png" onclick="openLightbox(this.src)">
+  <img src="images/03. ETHNO.png" onclick="openLightbox(this.src)">
+  <img src="images/04. LINGUISTICS.png" onclick="openLightbox(this.src)">
+  <img src="images/06. ABOLITION.png" onclick="openLightbox(this.src)">
+  <img src="images/07. RAILROAD.png" onclick="openLightbox(this.src)">
+  <img src="images/08. FOUNDATIONAL CITIES.png" onclick="openLightbox(this.src)">
+  <img src="images/09. MILITARY USCT.png" onclick="openLightbox(this.src)">
+  <img src="images/10. MILITARY BUFFALO.png" onclick="openLightbox(this.src)">
+  <img src="images/11. MILITARY TUSK.png" onclick="openLightbox(this.src)">
+  <img src="images/12. COWBOYS.png" onclick="openLightbox(this.src)">
+  <img src="images/13. MEMORIAL DAY.png" onclick="openLightbox(this.src)">
+  <img src="images/14. GRACE WISHER.png" onclick="openLightbox(this.src)">
+  <img src="images/15. STATUE OF LIBERTY.png" onclick="openLightbox(this.src)">
+  <img src="images/16. RECONSTRUCTION.png" onclick="openLightbox(this.src)">
+  <img src="images/17. WALL STREET.png" onclick="openLightbox(this.src)">
+  <img src="images/18. HBCU.png" onclick="openLightbox(this.src)">
+  <img src="images/19. INVENTIONS.png" onclick="openLightbox(this.src)">
+  <img src="images/20. CARS.png" onclick="openLightbox(this.src)">
+  <img src="images/21. PULLMEN PORTER.png" onclick="openLightbox(this.src)">
+  <img src="images/22. SPORTS.png" onclick="openLightbox(this.src)">
+  <img src="images/23. EXPLORER.png" onclick="openLightbox(this.src)">
+  <img src="images/24. TRAVEL.png" onclick="openLightbox(this.src)">
+  <img src="images/25. HAIR BEAUTY SALON.png" onclick="openLightbox(this.src)">
+  <img src="images/26. FOOD BBQ.png" onclick="openLightbox(this.src)">
+  <img src="images/27. FOOD SOUL.png" onclick="openLightbox(this.src)">
+  <img src="images/28. DINER.png" onclick="openLightbox(this.src)">
+  <img src="images/29. ICE CREAM TRUCK.png" onclick="openLightbox(this.src)">
+  <img src="images/30. BEACH.png" onclick="openLightbox(this.src)">
+  <img src="images/31. COUNTRY FAIR.png" onclick="openLightbox(this.src)">
+  <img src="images/32. ROLLER RINK.png" onclick="openLightbox(this.src)">
+  <img src="images/33. STREET GAMES.png" onclick="openLightbox(this.src)">
+  <img src="images/34. DRIVE IN MOVIE.png" onclick="openLightbox(this.src)">
+  <img src="images/35. BLACK PANTHERS.png" onclick="openLightbox(this.src)">
+  <img src="images/36. LOWRIDERS.png" onclick="openLightbox(this.src)">
+  <img src="images/37. HUMANITARIANS.png" onclick="openLightbox(this.src)">
+  <img src="images/38. DANCE TAP.png" onclick="openLightbox(this.src)">
+  <img src="images/39. COTTON CLUB.png" onclick="openLightbox(this.src)">
+  <img src="images/40. HARLEM.png" onclick="openLightbox(this.src)">
+  <img src="images/41. CHURCH.png" onclick="openLightbox(this.src)">
+  <img src="images/42. MUSIC BARERSHOP.png" onclick="openLightbox(this.src)">
+  <img src="images/43. MUSIC COUNTRY.png" onclick="openLightbox(this.src)">
+  <img src="images/44. MUSIC BLUES.png" onclick="openLightbox(this.src)">
+  <img src="images/45. MUSIC JAZZ.png" onclick="openLightbox(this.src)">
+  <img src="images/46. MUSIC ROCK.png" onclick="openLightbox(this.src)">
+  <img src="images/47. MUSIC SOUL.png" onclick="openLightbox(this.src)">
+  <img src="images/48. MUSIC FUNK.png" onclick="openLightbox(this.src)">
+  <img src="images/49. MUSIC DISCO.png" onclick="openLightbox(this.src)">
+  <img src="images/50. MUSIC RAP.png" onclick="openLightbox(this.src)">
+  <img src="images/51. MUSIC INTERNATIONAL.png" onclick="openLightbox(this.src)">
 </div>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
