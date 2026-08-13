@@ -44,16 +44,27 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.92);
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 999;
     overflow: hidden;
   }
+
+  /* Row layout: image stage on the left, caption panel on the right */
+  #lightbox-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 92%;
+    height: 86%;
+    max-width: 1400px;
+    gap: 28px;
+  }
+
   #lightbox-stage {
     position: relative;
-    width: 90%;
-    height: 78%;
+    flex: 1 1 auto;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,23 +78,52 @@
     user-select: none;
     transform-origin: center center;
   }
+
+  /* Caption sidebar */
+  #lightbox-sidebar {
+    flex: 0 0 340px;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   #lightbox-caption {
-    color: #eee;
+    color: #7a7a7a;
     font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 14px;
+    line-height: 1.7;
     text-align: justify;
-    text-align-last: left;
-    max-width: 600px;
-    max-height: 22vh;
+    text-align-last: justify;
+    -moz-text-align-last: justify;
+    hyphens: auto;
+    max-height: 62vh;
     overflow-y: auto;
-    padding: 0 10px;
+    padding-right: 12px;
   }
   #lightbox-counter {
-    color: #999;
-    font-size: 0.9rem;
-    margin-top: 8px;
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 14px;
   }
+
+  @media (max-width: 800px) {
+    #lightbox-content {
+      flex-direction: column;
+      width: 92%;
+      height: 90%;
+      gap: 14px;
+    }
+    #lightbox-stage {
+      flex: 1 1 55%;
+    }
+    #lightbox-sidebar {
+      flex: 0 1 auto;
+      max-width: 100%;
+    }
+    #lightbox-caption {
+      max-height: 22vh;
+    }
+  }
+
   .lb-close {
     position: absolute;
     top: 18px; right: 28px;
@@ -114,14 +154,7 @@
 
 <div class="grid" id="galleryGrid">
   <div class="item"><img data-caption="For centuries, agriculturists born in bondage toiled to create fertile fields of gold." src="images/01. FROM THE SOIL.png"></div>
-  <div class="item"><img data-caption="Negro cloth, a traditional attire designed for the
-enslaved. The Boston Manufacturing Company
-stitched a coarse fabric as a symbol of bondage and
-status. Factories depended on cotton and Indigofera
-tinctoria plants, “blue gold” harvested and processed
-on plantations by the enslaved. A uniform of
-oppression soared to the heights of fashion around
-the globe." src="images/02. NEGRO CLOTH.png"></div>
+  <div class="item"><img data-caption="Negro Cloth" src="images/02. NEGRO CLOTH.png"></div>
   <div class="item"><img data-caption="Ethno" src="images/03. ETHNO.png"></div>
   <div class="item"><img data-caption="Spoken all over the planet, the Black American dialect expressed complex concepts with fewer words. Traced to the Caspian Steppe, proto-Indo-European language evolved into Old English, c. 450-1,150 CE. Characterized as outsiders, the Black American collective inherited the genetics of European colonists to affect Middle to Modern English, c. 1,150–1,700 CE, with Gullah Geechee, Louisiana Creole, Afro-Seminole Creole, and Tutnese—a secret language spoken by the enslaved. Europeans in North America shifted from Scandinavian, Slavic, and Romance languages to English. South American, Central American, Asian, Oceanian, Middle Eastern, African, and Caribbean countries speak official European languages. Indigenous African, Greek, Turkic, Scandinavian, Russian, and Hebrew speakers use English to conduct international business. Velvet vocal resonances produced celebrated singers, DJs, rappers, orators, and narrators in advertisements, documentaries, television, and cinema—Roots, Star Wars… The New Cab Calloway's Cat-ologue: A Hepster's Dictionary, c. 1,939 CE. Jazz artists added depth to English and foretold future music genres—Hip-Hop, Rock, Funk... Lester Young, a legendary saxophonist, used “cool” to signify a calm and collected state of mind." src="images/04. LINGUISTICS.png"></div>
   <div class="item"><img data-caption="Abolition" src="images/06. ABOLITION.png"></div>
@@ -175,12 +208,16 @@ the globe." src="images/02. NEGRO CLOTH.png"></div>
 <div id="lightbox">
   <div class="lb-close" id="lbClose">&times;</div>
   <div class="lb-arrow" id="lb-prev">&#10094;</div>
-  <div id="lightbox-stage">
-    <img id="lightbox-img" src="">
+  <div id="lightbox-content">
+    <div id="lightbox-stage">
+      <img id="lightbox-img" src="">
+    </div>
+    <div id="lightbox-sidebar">
+      <div id="lightbox-caption"></div>
+      <div id="lightbox-counter"></div>
+    </div>
   </div>
   <div class="lb-arrow" id="lb-next">&#10095;</div>
-  <div id="lightbox-caption"></div>
-  <div id="lightbox-counter"></div>
 </div>
 
 <script>
