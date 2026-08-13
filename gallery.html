@@ -10,34 +10,34 @@
     padding: 20px;
     font-family: sans-serif;
   }
+
+  /* ---- Masonry grid (preserves true reading order, handles uneven images) ---- */
   .grid {
-    column-count: 4;
-    column-gap: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-auto-rows: 6px; /* small unit; JS sets row-span per item based on image height */
+    gap: 14px;
   }
-  @media (max-width: 1000px) { .grid { column-count: 3; } }
-  @media (max-width: 700px)  { .grid { column-count: 2; } }
-  @media (max-width: 420px)  { .grid { column-count: 1; } }
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  }
+  @media (max-width: 420px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  }
 
   .item {
-    break-inside: avoid;
-    margin-bottom: 14px;
-    text-align: center;
+    overflow: hidden;
   }
   .item img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
     display: block;
+    border-radius: 8px;
     cursor: zoom-in;
     transition: transform 0.2s ease;
   }
   .item img:hover {
     transform: scale(1.02);
-  }
-  .caption {
-    color: #eee;
-    font-size: 0.85rem;
-    margin-top: 6px;
   }
 
   #lightbox {
@@ -64,7 +64,7 @@
   #lightbox img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 8px; 
+    border-radius: 8px;
     cursor: grab;
     user-select: none;
     transform-origin: center center;
@@ -108,56 +108,56 @@
 <body>
 
 <div class="grid" id="galleryGrid">
-  <div class="item"><img data-caption="From the Soil" src="images/01. FROM THE SOIL.png"><div class="caption">From the Soil</div></div>
-  <div class="item"><img data-caption="Negro Cloth" src="images/02. NEGRO CLOTH.png"><div class="caption">Negro Cloth</div></div>
-  <div class="item"><img data-caption="Ethno" src="images/03. ETHNO.png"><div class="caption">Ethno</div></div>
-  <div class="item"><img data-caption="Linguistics" src="images/04. LINGUISTICS.png"><div class="caption">Linguistics</div></div>
-  <div class="item"><img data-caption="Abolition" src="images/06. ABOLITION.png"><div class="caption">Abolition</div></div>
-  <div class="item"><img data-caption="Railroad" src="images/07. RAILROAD.png"><div class="caption">Railroad</div></div>
-  <div class="item"><img data-caption="Foundational Cities" src="images/08. FOUNDATIONAL CITIES.png"><div class="caption">Foundational Cities</div></div>
-  <div class="item"><img data-caption="Military USCT" src="images/09. MILITARY USCT.png"><div class="caption">Military USCT</div></div>
-  <div class="item"><img data-caption="Military Buffalo Soldiers" src="images/10. MILITARY BUFFALO.png"><div class="caption">Military Buffalo Soldiers</div></div>
-  <div class="item"><img data-caption="Military Tuskegee" src="images/11. MILITARY TUSK.png"><div class="caption">Military Tuskegee</div></div>
-  <div class="item"><img data-caption="Cowboys" src="images/12. COWBOYS.png"><div class="caption">Cowboys</div></div>
-  <div class="item"><img data-caption="Memorial Day" src="images/13. MEMORIAL DAY.png"><div class="caption">Memorial Day</div></div>
-  <div class="item"><img data-caption="Grace Wisher" src="images/14. GRACE WISHER.png"><div class="caption">Grace Wisher</div></div>
-  <div class="item"><img data-caption="Statue of Liberty" src="images/15. STATUE OF LIBERTY.png"><div class="caption">Statue of Liberty</div></div>
-  <div class="item"><img data-caption="Reconstruction" src="images/16. RECONSTRUCTION.png"><div class="caption">Reconstruction</div></div>
-  <div class="item"><img data-caption="Wall Street" src="images/17. WALL STREET.png"><div class="caption">Wall Street</div></div>
-  <div class="item"><img data-caption="HBCU" src="images/18. HBCU.png"><div class="caption">HBCU</div></div>
-  <div class="item"><img data-caption="Inventions" src="images/19. INVENTIONS.png"><div class="caption">Inventions</div></div>
-  <div class="item"><img data-caption="Cars" src="images/20. CARS.png"><div class="caption">Cars</div></div>
-  <div class="item"><img data-caption="Pullman Porter" src="images/21. PULLMEN PORTER.png"><div class="caption">Pullman Porter</div></div>
-  <div class="item"><img data-caption="Sports" src="images/22. SPORTS.png"><div class="caption">Sports</div></div>
-  <div class="item"><img data-caption="Explorer" src="images/23. EXPLORER.png"><div class="caption">Explorer</div></div>
-  <div class="item"><img data-caption="Travel" src="images/24. TRAVEL.png"><div class="caption">Travel</div></div>
-  <div class="item"><img data-caption="Hair Beauty Salon" src="images/25. HAIR BEAUTY SALON.png"><div class="caption">Hair Beauty Salon</div></div>
-  <div class="item"><img data-caption="Food: BBQ" src="images/26. FOOD BBQ.png"><div class="caption">Food: BBQ</div></div>
-  <div class="item"><img data-caption="Food: Soul" src="images/27. FOOD SOUL.png"><div class="caption">Food: Soul</div></div>
-  <div class="item"><img data-caption="Diner" src="images/28. DINER.png"><div class="caption">Diner</div></div>
-  <div class="item"><img data-caption="Ice Cream Truck" src="images/29. ICE CREAM TRUCK.png"><div class="caption">Ice Cream Truck</div></div>
-  <div class="item"><img data-caption="Beach" src="images/30. BEACH.png"><div class="caption">Beach</div></div>
-  <div class="item"><img data-caption="Country Fair" src="images/31. COUNTRY FAIR.png"><div class="caption">Country Fair</div></div>
-  <div class="item"><img data-caption="Roller Rink" src="images/32. ROLLER RINK.png"><div class="caption">Roller Rink</div></div>
-  <div class="item"><img data-caption="Street Games" src="images/33. STREET GAMES.png"><div class="caption">Street Games</div></div>
-  <div class="item"><img data-caption="Drive-In Movie" src="images/34. DRIVE IN MOVIE.png"><div class="caption">Drive-In Movie</div></div>
-  <div class="item"><img data-caption="Black Panthers" src="images/35. BLACK PANTHERS.png"><div class="caption">Black Panthers</div></div>
-  <div class="item"><img data-caption="Lowriders" src="images/36. LOWRIDERS.png"><div class="caption">Lowriders</div></div>
-  <div class="item"><img data-caption="Humanitarians" src="images/37. HUMANITARIANS.png"><div class="caption">Humanitarians</div></div>
-  <div class="item"><img data-caption="Dance: Tap" src="images/38. DANCE TAP.png"><div class="caption">Dance: Tap</div></div>
-  <div class="item"><img data-caption="Cotton Club" src="images/39. COTTON CLUB.png"><div class="caption">Cotton Club</div></div>
-  <div class="item"><img data-caption="Harlem" src="images/40. HARLEM.png"><div class="caption">Harlem</div></div>
-  <div class="item"><img data-caption="Church" src="images/41. CHURCH.png"><div class="caption">Church</div></div>
-  <div class="item"><img data-caption="Music: Barbershop" src="images/42. MUSIC BARERSHOP.png"><div class="caption">Music: Barbershop</div></div>
-  <div class="item"><img data-caption="Music: Country" src="images/43. MUSIC COUNTRY.png"><div class="caption">Music: Country</div></div>
-  <div class="item"><img data-caption="Music: Blues" src="images/44. MUSIC BLUES.png"><div class="caption">Music: Blues</div></div>
-  <div class="item"><img data-caption="Music: Jazz" src="images/45. MUSIC JAZZ.png"><div class="caption">Music: Jazz</div></div>
-  <div class="item"><img data-caption="Music: Rock" src="images/46. MUSIC ROCK.png"><div class="caption">Music: Rock</div></div>
-  <div class="item"><img data-caption="Music: Soul" src="images/47. MUSIC SOUL.png"><div class="caption">Music: Soul</div></div>
-  <div class="item"><img data-caption="Music: Funk" src="images/48. MUSIC FUNK.png"><div class="caption">Music: Funk</div></div>
-  <div class="item"><img data-caption="Music: Disco" src="images/49. MUSIC DISCO.png"><div class="caption">Music: Disco</div></div>
-  <div class="item"><img data-caption="Music: Rap" src="images/50. MUSIC RAP.png"><div class="caption">Music: Rap</div></div>
-  <div class="item"><img data-caption="Music: International" src="images/51. MUSIC INTERNATIONAL.png"><div class="caption">Music: International</div></div>
+  <div class="item"><img data-caption="From the Soil" src="images/01. FROM THE SOIL.png"></div>
+  <div class="item"><img data-caption="Negro Cloth" src="images/02. NEGRO CLOTH.png"></div>
+  <div class="item"><img data-caption="Ethno" src="images/03. ETHNO.png"></div>
+  <div class="item"><img data-caption="Linguistics" src="images/04. LINGUISTICS.png"></div>
+  <div class="item"><img data-caption="Abolition" src="images/06. ABOLITION.png"></div>
+  <div class="item"><img data-caption="Railroad" src="images/07. RAILROAD.png"></div>
+  <div class="item"><img data-caption="Foundational Cities" src="images/08. FOUNDATIONAL CITIES.png"></div>
+  <div class="item"><img data-caption="Military USCT" src="images/09. MILITARY USCT.png"></div>
+  <div class="item"><img data-caption="Military Buffalo Soldiers" src="images/10. MILITARY BUFFALO.png"></div>
+  <div class="item"><img data-caption="Military Tuskegee" src="images/11. MILITARY TUSK.png"></div>
+  <div class="item"><img data-caption="Cowboys" src="images/12. COWBOYS.png"></div>
+  <div class="item"><img data-caption="Memorial Day" src="images/13. MEMORIAL DAY.png"></div>
+  <div class="item"><img data-caption="Grace Wisher" src="images/14. GRACE WISHER.png"></div>
+  <div class="item"><img data-caption="Statue of Liberty" src="images/15. STATUE OF LIBERTY.png"></div>
+  <div class="item"><img data-caption="Reconstruction" src="images/16. RECONSTRUCTION.png"></div>
+  <div class="item"><img data-caption="Wall Street" src="images/17. WALL STREET.png"></div>
+  <div class="item"><img data-caption="HBCU" src="images/18. HBCU.png"></div>
+  <div class="item"><img data-caption="Inventions" src="images/19. INVENTIONS.png"></div>
+  <div class="item"><img data-caption="Cars" src="images/20. CARS.png"></div>
+  <div class="item"><img data-caption="Pullman Porter" src="images/21. PULLMEN PORTER.png"></div>
+  <div class="item"><img data-caption="Sports" src="images/22. SPORTS.png"></div>
+  <div class="item"><img data-caption="Explorer" src="images/23. EXPLORER.png"></div>
+  <div class="item"><img data-caption="Travel" src="images/24. TRAVEL.png"></div>
+  <div class="item"><img data-caption="Hair Beauty Salon" src="images/25. HAIR BEAUTY SALON.png"></div>
+  <div class="item"><img data-caption="Food: BBQ" src="images/26. FOOD BBQ.png"></div>
+  <div class="item"><img data-caption="Food: Soul" src="images/27. FOOD SOUL.png"></div>
+  <div class="item"><img data-caption="Diner" src="images/28. DINER.png"></div>
+  <div class="item"><img data-caption="Ice Cream Truck" src="images/29. ICE CREAM TRUCK.png"></div>
+  <div class="item"><img data-caption="Beach" src="images/30. BEACH.png"></div>
+  <div class="item"><img data-caption="Country Fair" src="images/31. COUNTRY FAIR.png"></div>
+  <div class="item"><img data-caption="Roller Rink" src="images/32. ROLLER RINK.png"></div>
+  <div class="item"><img data-caption="Street Games" src="images/33. STREET GAMES.png"></div>
+  <div class="item"><img data-caption="Drive-In Movie" src="images/34. DRIVE IN MOVIE.png"></div>
+  <div class="item"><img data-caption="Black Panthers" src="images/35. BLACK PANTHERS.png"></div>
+  <div class="item"><img data-caption="Lowriders" src="images/36. LOWRIDERS.png"></div>
+  <div class="item"><img data-caption="Humanitarians" src="images/37. HUMANITARIANS.png"></div>
+  <div class="item"><img data-caption="Dance: Tap" src="images/38. DANCE TAP.png"></div>
+  <div class="item"><img data-caption="Cotton Club" src="images/39. COTTON CLUB.png"></div>
+  <div class="item"><img data-caption="Harlem" src="images/40. HARLEM.png"></div>
+  <div class="item"><img data-caption="Church" src="images/41. CHURCH.png"></div>
+  <div class="item"><img data-caption="Music: Barbershop" src="images/42. MUSIC BARERSHOP.png"></div>
+  <div class="item"><img data-caption="Music: Country" src="images/43. MUSIC COUNTRY.png"></div>
+  <div class="item"><img data-caption="Music: Blues" src="images/44. MUSIC BLUES.png"></div>
+  <div class="item"><img data-caption="Music: Jazz" src="images/45. MUSIC JAZZ.png"></div>
+  <div class="item"><img data-caption="Music: Rock" src="images/46. MUSIC ROCK.png"></div>
+  <div class="item"><img data-caption="Music: Soul" src="images/47. MUSIC SOUL.png"></div>
+  <div class="item"><img data-caption="Music: Funk" src="images/48. MUSIC FUNK.png"></div>
+  <div class="item"><img data-caption="Music: Disco" src="images/49. MUSIC DISCO.png"></div>
+  <div class="item"><img data-caption="Music: Rap" src="images/50. MUSIC RAP.png"></div>
+  <div class="item"><img data-caption="Music: International" src="images/51. MUSIC INTERNATIONAL.png"></div>
 </div>
 
 <div id="lightbox">
@@ -172,7 +172,43 @@
 </div>
 
 <script>
-const images = Array.from(document.querySelectorAll('#galleryGrid img'));
+const grid = document.getElementById('galleryGrid');
+const items = Array.from(grid.querySelectorAll('.item'));
+const images = items.map(item => item.querySelector('img'));
+
+/* ---- Masonry: give each item a grid-row-end span based on its rendered
+   image height, so uneven images pack tightly while staying in true
+   left-to-right, top-to-bottom document order (no column-count reshuffling). ---- */
+function resizeGridItem(item) {
+  const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+  const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('row-gap')) || 14;
+  const img = item.querySelector('img');
+  const contentHeight = img.getBoundingClientRect().height;
+  const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+  item.style.gridRowEnd = 'span ' + rowSpan;
+}
+
+function resizeAllGridItems() {
+  items.forEach(resizeGridItem);
+}
+
+// Recompute once each image has loaded (so we use real dimensions)
+images.forEach((img, i) => {
+  if (img.complete) {
+    resizeGridItem(items[i]);
+  } else {
+    img.addEventListener('load', () => resizeGridItem(items[i]));
+  }
+});
+
+window.addEventListener('load', resizeAllGridItems);
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(resizeAllGridItems, 100);
+});
+
+// ---- Lightbox ----
 let currentIndex = 0;
 let scale = 1, panX = 0, panY = 0, isDragging = false, startX = 0, startY = 0;
 
