@@ -11,11 +11,10 @@
     font-family: sans-serif;
   }
 
-  /* ---- Masonry grid (preserves true reading order, handles uneven images) ---- */
+  /* ---- Uniform grid: fixed-size cells, strict row-by-row order, no zigzag ---- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-auto-rows: 6px; /* small unit; JS sets row-span per item based on image height */
     gap: 14px;
   }
   @media (max-width: 700px) {
@@ -27,17 +26,18 @@
 
   .item {
     overflow: hidden;
+    border-radius: 8px;
   }
   .item img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
     display: block;
-    border-radius: 8px;
     cursor: zoom-in;
     transition: transform 0.2s ease;
   }
   .item img:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
   }
 
   #lightbox {
@@ -111,37 +111,7 @@
   <div class="item"><img data-caption="From the Soil" src="images/01. FROM THE SOIL.png"></div>
   <div class="item"><img data-caption="Negro Cloth" src="images/02. NEGRO CLOTH.png"></div>
   <div class="item"><img data-caption="Ethno" src="images/03. ETHNO.png"></div>
-  <div class="item"><img data-caption=Spoken all over the planet, the Black American
-dialect expressed complex concepts with fewer
-words. Traced to the Caspian Steppe, proto-Indo-
-European language evolved into Old English, c.
-450-1,150 CE. Characterized as outsiders, the Black
-American collective inherited the genetics of
-European colonists to affect Middle to Modern
-English, c. 1,150–1,700 CE, with Gullah Geechee,
-Louisiana Creole, Afro-Seminole Creole, and Tutnese
-—a secret language spoken by the enslaved.
-Europeans in North America shifted from
-Scandinavian, Slavic, and Romance languages to
-English. South American, Central American, Asian,
-Oceanian, Middle Eastern, African, and Caribbean
-countries speak official European languages.
-Indigenous African, Greek, Turkic, Scandinavian,
-Russian, and Hebrew speakers use English to
-conduct international business.
-Velvet vocal resonances produced celebrated
-singers, DJs, rappers, orators, and narrators in
-advertisements, documentaries, television, and
-cinema—Roots, Star Wars…
-The New Cab Calloway's Cat-ologue: A Hepster's
-Dictionary, c. 1,939 CE.
-Jazz artists added depth to English and foretold
-future music genres—Hip-Hop, Rock, Funk... Lester
-Young, a legendary saxophonist, used “cool” to
-signify a calm and collected state of mind. Danny
-Barker, the “Banjo King of New Orleans,” evoked
-"Funky Butt,” or “Buddy Bolden's Blues,” “dancing
-close together and belly rubbing src="images/04. LINGUISTICS.png"></div>
+  <div class="item"><img data-caption="Linguistics" src="images/04. LINGUISTICS.png"></div>
   <div class="item"><img data-caption="Abolition" src="images/06. ABOLITION.png"></div>
   <div class="item"><img data-caption="Railroad" src="images/07. RAILROAD.png"></div>
   <div class="item"><img data-caption="Foundational Cities" src="images/08. FOUNDATIONAL CITIES.png"></div>
@@ -205,38 +175,6 @@ close together and belly rubbing src="images/04. LINGUISTICS.png"></div>
 const grid = document.getElementById('galleryGrid');
 const items = Array.from(grid.querySelectorAll('.item'));
 const images = items.map(item => item.querySelector('img'));
-
-/* ---- Masonry: give each item a grid-row-end span based on its rendered
-   image height, so uneven images pack tightly while staying in true
-   left-to-right, top-to-bottom document order (no column-count reshuffling). ---- */
-function resizeGridItem(item) {
-  const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-  const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('row-gap')) || 14;
-  const img = item.querySelector('img');
-  const contentHeight = img.getBoundingClientRect().height;
-  const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
-  item.style.gridRowEnd = 'span ' + rowSpan;
-}
-
-function resizeAllGridItems() {
-  items.forEach(resizeGridItem);
-}
-
-// Recompute once each image has loaded (so we use real dimensions)
-images.forEach((img, i) => {
-  if (img.complete) {
-    resizeGridItem(items[i]);
-  } else {
-    img.addEventListener('load', () => resizeGridItem(items[i]));
-  }
-});
-
-window.addEventListener('load', resizeAllGridItems);
-let resizeTimer;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(resizeAllGridItems, 100);
-});
 
 // ---- Lightbox ----
 let currentIndex = 0;
