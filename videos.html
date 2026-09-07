@@ -1,1 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vault Videos</title>
+<style>
+  body {
+    background: #111;
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+  } 
 
+  .top-nav {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .top-nav a {
+    color: #dbcbb2;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 14px;
+    padding-bottom: 4px;
+  }
+  .top-nav a.active {
+    border-bottom: 2px solid #d4af6a;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* change to repeat(5, 1fr) for 5 per row */
+    gap: 14px;
+  }
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 420px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  }
+
+  .item {
+    aspect-ratio: 7 / 10;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: zoom-in;
+  }
+  .item video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+  }
+  .item:hover video {
+    transform: scale(1.02);
+  }
+  .item .play-badge {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .item .play-badge::after {
+    content: '';
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 4px;
+  }
+
+  #lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  #lightbox-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 92%;
+    height: 86%;
+    max-width: 1400px;
+    gap: 28px;
+  }
+
+  #lightbox-stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #lightbox video {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    user-select: none;
+  }
+  #lightbox-sidebar {
+    flex: 0 0 420px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 0;
+  }
+  #lightbox-caption {
+    color: #dbcbb2;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    text-align: justify;
+    hyphens: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 12px;
+    white-space: pre-line;
+  }
+  #lightbox-caption::-webkit-scrollbar {
+    width: 6px;
+  }
+  #lightbox-caption::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 3px;
+  }
+  #lightbox-counter {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 14px;
+  }
+  @media (max-width: 800px) {
+    #lightbox-content {
+      flex-direction: column;
+      width: 92%;
+      height: 90%;
+      gap: 14px;
+    }
+    #lightbox-stage {
+      flex: 1 1 55%;
+    }
+    #lightbox-sidebar {
+      flex: 0 1 auto;
+      max-width: 100%;
+    }
+    #lightbox-caption {
+      max-height: 22vh;
+    }
+  }
+
+  .lb-close {
+    position: absolute;
+    top: 18px; right: 28px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 10px 16px;
+    user-select: none;
+    z-index: 1001;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+  }
+  .lb-arrow:hover { background: rgba(0,0,0,0.6); }
+  #lb-prev { left: 12px; }
+  #lb-next { right: 12px; }
+
+.support-banner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+}
+.donate-btn {
+  flex: 1 1 200px;
+  max-width: 260px;
+  text-align: center;
+}
+  .donate-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      color: #1a1408;
+      background: linear-gradient(135deg, #d4af6a, #a97c34);
+      border: 1px solid #7a5a20;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .donate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+      background: linear-gradient(135deg, #e6c47e, #b98a3e);
+    }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="gallery.html">Photos</a>
+  <a href="videos.html" class="active">Videos</a>
+</div>
+
+<div class="grid" id="galleryGrid">
+  <div class="item"><video data-caption="For centuries, agriculturists born in bondage toiled to create fertile fields of gold. Legendary “Green Fingers” farmers developed crop rotation, soil treatments, and mechanical devices to increase yields. 
+ 
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/01.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Negro cloth, a traditional cloth designed for the enslaved. The Boston Manufacturing Company stitched a coarse fabric as a symbol of bondage and status. Factories depended on cotton and Indigofera tinctoria plants, 'blue gold' harvested and processed on plantations by the enslaved. A uniform of oppression soared to the heights of fashion around the globe. 
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/02.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black Americans emerged through ethnogenesis in North America, with haplogroups from Europe, maternal-H, U, K, T, paternal-R1b, I, J, North America, maternal-A, B, C, D, paternal-Q, Africa, maternal-L, paternal-E1b1a/E-V38, and Asia, Oceania, paternal-M, O, from Ancestral Australo-Melanesians, “Manila Men” in Louisiana, and Malagasies genetics. On plantations, procreation produced bi-racial and tri-racial progeny, while waves of Europeans, Christianized Ancestral Australo-Melanesians, Beringian descendants, and Free People of Color—by birth or independent liberation—formed tri-racial isolates. Emerged through ethnogenesis in North America, with haplogroups from five to six continents, the emancipated used the names of hidden ancestors—colonists—famous figures, Biblical heroes, geographical places, Afrocentric, Arabic, and Indigenous identifiers. 
+                      
+Free People of Color developed cultures in tri-racial isolates:
+                      Cheswold Moors
+                      Mitsawoketts
+                      Nanticokes
+                      Lenni-Lenapes
+                      Melungeons
+                      Ramps
+                      Dominikers
+                      Montauks
+                      Mantinecocks
+                      Van Guilders
+                      Poospatucks
+                      Lumbees
+                      Croatans
+                      Clappers
+                      Shinnecocks
+                      Waccamaws
+                      Haliwas
+                      Redbones
+                      Buckheads
+                      Yellowhammers
+                      Creoles
+                      Cajuns
+                      Ramapos/Ramapoughs
+                      Jackson Whites
+                      Narragansetts
+                      Gay Heads
+                      Powhatans
+                      Mashpees
+                      Carmelites
+                      Piscataway Conoy
+                      Guineas
+                      Turks
+                      Pooles
+                      Chickahominy
+                      Smilings
+                      Charvises
+                      Creels
+                      Brass Ankles
+                      Redlegs
+                      Rapides
+                      St. Landry Mulattoes
+                      Zwolle-Ebards
+                      Bushwhackers
+                      Rockingham Surry Group
+                      Vinton County Group
+                      Darke County Group
+                      Keating Mountain Group
+                      Karthus Half-Breeds
+                      Saponis/Sapponys
+                      Upper Mattaponis
+                      Patawomecks
+                      Rappahannocks
+                      N-Hill People…
+
+https://wonispotts.github.io/Vault/ethnicity.pdf
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/03.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spoken all over the planet, the Black American dialect expressed complex concepts with fewer words. Traced to the Caspian Steppe, proto-Indo-European language evolved into Old English, c. 450-1,150 CE. Characterized as outsiders, the Black American collective inherited the genetics of European colonists to affect Middle to Modern English, c. 1,150–1,700 CE, with Gullah Geechee, Louisiana Creole, Afro-Seminole Creole, and Tutnese—a secret language spoken by the enslaved. 
+                      
+Europeans in North America shifted from Scandinavian, Slavic, and Romance languages to English. South American, Central American, Asian, Oceanian, Middle Eastern, African, and Caribbean countries speak official European languages. Indigenous African, Greek, Turkic, Scandinavian, Russian, and Hebrew speakers use English to conduct international business. 
+                      
+Velvet vocal resonances produced celebrated singers, DJs, rappers, orators, and narrators in advertisements, documentaries, television, and cinema—Roots, Star Wars… 
+                      
+The New Cab Calloway's Cat-ologue: A Hepster's Dictionary, c. 1,939 CE. 
+                      
+Jazz artists added depth to English and foretold future music genres—Hip-Hop, Rock, Funk... Lester Young, a legendary saxophonist, used 'cool' to signify a calm and collected state of mind.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/04.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Hundreds of revolts, escapes, and mutinies changed politics with the rise of abolitionists and activists—Frederick Douglass, Harriet Tubman, Sojourner Truth, Robert Smalls, Dred Sam Scott, Nat Turner, William Wells Brown, Paul Cuffee, William Howard Day, Charlotte Forten Grimke, Frances Ellen Watkins Harper, Lewis Hayden, Josiah Henson, Paul Jennings, Katherine Brown, Charlotte L. Brown, Robert Fox, Elizabeth Jennings Graham, Ida B. Wells, Booker T. Washington... 
+
+Abolitionists—Elizabeth Freeman, Quock Walker, and Prince Hall in Pennsylvania, Massachusetts, Vermont, New Hampshire, Connecticut, and Rhode Island, gradually self-emancipated and led abolition movements, c. 1, 700 CE.
+
+Harriet Tubman: Born enslaved, abolitionist, nurse, educator, scout, spy, and famous Underground Railroad conductor.
+
+Sojourner Truth: Born enslaved, abolitionist, civil rights leader, women's rights leader, and temperance activist.
+
+Robert Smalls: Born enslaved, a naval hero known for a heroic escape amidst the Civil War, and elected to the U.S. Congress from South Carolina, c. 1,875–1,879 CE.
+
+Dred Sam Scott: Born enslaved, sued for freedom in the Dred Scott v. Sandford case or the Dred Scott Decision. The United States Supreme Court held that the U.S. Constitution did not extend American citizenship to Black Americans.
+
+Nat Turner: Born enslaved, carpenter, preacher, and led a four-day rebellion in Southampton County, Virginia.
+
+Ida B. Wells: Born enslaved, civil rights leader, investigative journalist, educator, and one of the founders of the National Association for the Advancement of Colored People.
+
+Booker Taliaferro Washington: Born enslaved, prominent leader, educator, author, orator, and philanthropist.
+
+Rosa Louise McCauley Parks: Civil rights activist, challenged bus segregation which led to the Montgomery bus boycott.
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/06.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Railroad companies used the enslaved to lay over 10,000 miles of train tracks in the South and East, compared to 700 miles of rail laid in the West by paid foreign laborers. Later, emancipated leased laborers constructed train tracks in the Midwest and North. Black Americans patented railroad lubricants and mechanical devices, notably the famous 'Real McCoy' inventions. Country musicians learned techniques to pick guitars and to sing from Black American railroad workers.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/07.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="The explosive growth from agricultural wealth led to the development of ports, railroads, and urban areas, built by Black American architects, craftsmen, and laborers—Wallace A. Rayfield, John A. Lankford, George Washington Foster, Vertner Woodson Tandy, Julian Francis Abele, Paul Revere Williams, Clarence W. 'Cap' Wigington, and Benjamin Banneker.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/08.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black Americans served honorably in North American wars—War of 1812—Free Men of Color or Black Loyalists, The Civil War—United States Colored Troops and auxiliary—400,000, Indian Wars—Buffalo Soldiers, Spanish-American War—Buffalo Soldiers, WWI—Harlem Hellfighters—369 Infantry Regiment, and WWII—Tuskegee Airmen, winners of precursor to 'Top Gun' contest. Private Willie Duckworth, a Black American WWII soldier, created a cadence, the Duckworth Chant, 'Sound Off!' 
+
+“Without the military help of the Black Freedmen, the war against the South could not have been won” -President Abraham Lincoln.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/09.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="The Buffalo Soldiers constructed national parks, protected settlers, stagecoaches, wagon trains, and railroads. Regiments patrolled, paved roads, drew maps, blazed trails, fought fires, and removed livestock, rustlers, poachers, and loggers.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/10.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Tuskegee Airmen, won the precursor to “Top Gun contest.
+                      
+Two hundred thousand protestors in major cities—New York, Chicago, and Detroit—protested in support of Ethiopia and fought against the Italian invasion of Ethiopia, c. 1,935 CE. John Charles Robinson, the Brown Condor, volunteered to fight Italian forces as a commander in the Ethiopian Air Force.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/11.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Against a backdrop of the open range, humble ranch hands tended herds, rode horses, and roped cattle on drives. On the rugged Western frontier, the status of 'cowboy' carried a word to emasculate, 'boy.' The status of 'cattleman' exuded authority. Tales of charismatic lawmen and cowboys mesmerized the country. European descendant actors assumed the identities of charismatic Freedmen cowboys on the silver screen. In the end, halls of fame inducted folkloric Black American cowboys.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/12.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Formalized May 30, 1868, to honor fallen soldiers, the origins of Decoration Day trace back to May 1, 1865, in Charleston, South Carolina. Black Americans and missionaries reinterred deceased Union soldiers from a Confederate prison camp. In a show of respect, thousands built a fence, marked graves, accented with flowers, and held a parade under the Martyrs of the Race Course arch. The United States of America established Memorial Day in 1966.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/13.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/14.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Emma Lazarus' familiy, descendants of Judaic exiles and exploitative sugar plantation owners in Recife, Brazil, a Dutch colony, immigrated to the United States of America. The Lazarus business partnered with Bradish Johnson, an enslaver and plantation owner in Louisiana. Emma Lazarus composed a sonnet, which challenged the original symbolism of the Statue of Liberty. Constance Cary Harrison, a Confederate nurse, and William Maxwell Evarts, a Unionist sympathetic to Confederate interests, embraced Emma Lazarus. Southerners resented the monument, a memorial of the Civil War victory and the Emancipation Proclamation. 'Give me your tired, your poor, your huddled masses yearning to breathe free…' -The New Colossus.
+                     
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/15.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="The legacy of chattel slavery left a legion of barriers to break down and a labyrinth of obstacles to rise above. After the Emancipation Proclamation, Reconstruction Era politicians, from senators to police chiefs, ascended as powerful civil rights advocates. A symbol of the future and a threat to the old guard, Black Americans sought to reshape government with humanitarian-centered politicians. The emancipated suffered cross-burnings, medical apartheid, convict leasing, a collapsed Freedman’s Bank, desecrated cemeteries, lynch mobs, race riots—Paragould, Tulsa—Black Wall Street, East St. Louis, Ocoee… and massacres—Ebenezer Creek, Devil’s Punchbowl, Elaine-Red Summer, Colfax, Wilmington, North Carolina, Atlanta, Elaine Arkansas, Rosewood… The gains over the Reconstruction Period vanished.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/16.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Since the end of the Civil War and the Great Migration, the emancipated thrived in cities, suburbs, and rural settings in every state. Racial terrorism, gentrification, and reckless immigration policies destabilized Black American enclaves nationally. Crumpled newspapers hold the evidence of property destruction and genocide.
+
+Tulsa’s Greenwood District, Oklahoma: Known as Black Wall Street, a prosperous economic center before the race massacre.
+
+Harlem, New York: An epicenter for artist movements—Harlem Renaissance.
+
+Seneca Village: A community of Black American landowners, later demolished to create Central Park.
+
+Washington, D.C.’s Shaw: A vibrant history of culture and activism.
+
+Chicago’s Bronzeville: Historic nightlife and cultural center.
+
+Richmond’s Jackson Ward, Virginia: An economic and cultural district known for Black American businesses.
+
+New Orleans’ Tremé: Historic Black American enclave, rich in music heritage.
+
+Baltimore’s Upton: Historic center for civil rights and art.
+
+St. Louis’ The Ville: Historic universities and culture.
+
+Philadelphia’s Germantown: Rich in history, landmarks, and political activism.
+
+Detroit’s Black Bottom: Historic center with cultural landmarks.
+
+Los Angeles’ Leimert Park: A modern, artistic, and historic center for Black American culture.
+
+Oakland’s West Oakland: Famous for Black American civil rights activism.
+
+Atlanta’s Sweet Auburn District: A Black American historic and cultural landmark.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/17.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/18.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black Americans attended 101+ HBCUs and registered 50,000+ patents, c. 1,800-1,900 CE. Ingenious inventions, innovations, and achievements in agriculture, mechanics, medicine, architecture, technology, science, mathematics, astronomy, and NASA's race to space moved the United States of America forward. 
+                      
+https://wonispotts.github.io/Vault/Inventions.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/19.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="C. R. Patterson & Sons Cars: Designed automobiles superior to Henry Ford's mass-produced Model T. Born enslaved, c. 1,833 CE, Charles Richard Patterson escaped a Virginia plantation, trained as a blacksmith, and settled in Greenfield, Ohio. C.R. Patterson & Sons of Greenfield, Ohio, manufactured and repaired carriages, trucks, and buses.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/20.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Since companies declined to pay salaries, guests 'tipped' Black American workers. A. Philip Randolph headed a Black union—the Brotherhood of Sleeping Car Porters. Low wages and poor conditions led to a labor strike. After cities were paralyzed, the government created Labor Day and raised pay as a gesture of good faith, c. 1,882 CE.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/21.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Born out of a tradition of segregated leagues, Black Americans broke barriers in over fifty sports and competitions. From Olympic podiums to boxing rings, rodeo arenas, tennis courts, and NASCAR tracks, champions exuded humility and class. A mystique formed around power salutes, stare-downs, confident struts, insider handshakes, and activism. 
+                
+https://wonispotts.github.io/Vault/Sports.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/22.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+                      
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/23.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black Americans spend billions on luxury travel annually. On the international stage, philanthropy shone through schools, churches, and charitable concerts—We Are The World. The historic presence of elite segregated armed forces, united with iconic performances by Olympians, artists, and entertainers, built a stellar reputation across the planet.
+                      
+Spotts, W. (2020). Letters From Everywhere: Woni Spotts, first Black woman to travel to every country and continent.
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/24.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="On the stage, flappers danced, dolled up with silky ringlets of baby hair. 
+
+Entrepreneur, philanthropist, and social activist, Madam C.J. Walker built a hair-care and cosmetics empire. 
+
+As an act of rebellion against Eurocentric beauty standards, afros crowned kings and queens. Braids graced disco divas and inspired the blockbuster film 10. The Commodores' “Brick House“ and Sir Mix-a-Lot's “Baby Got Back” celebrated natural hair, sensual curves, brown skin, and full lips. James Brown's “Say it Loud, I’m Black, and I’m Proud” and activist chants “Black is Beautiful” and “Black Power” championed pride.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/25.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Since antiquity in the Americas, wild game, flavored by wood ash, wild onion, sassafras, or sumac, braised in hickory oil, and nut milk—cooked over open fires. In bondage, children stoked labor-intensive 24-hour fires and smoked meats guided by elder 'pitmasters' on plantations. Barbecue halls of fame awarded Black Americans for grill techniques, woods, flavors, and traditions.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/26.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Cherished crops—the seeds of soul food—thrived in harsh weather, rose from diverse soils, and echoed boundless strength and survival. From stark slave quarters to stately plantation kitchens, agricultural geniuses raised chickens, cultivated plants, honed culinary techniques, and crafted a unique world-class cuisine. Chefs published the first cookbooks—Hotel Keepers, Head Waiters, and Housekeepers’ Guide, Tunis Campbell, c. 1,848 CE. A Domestic Cook Book, Malinda Russell, c. 1,866 CE, and What Mrs. Fisher Knows About Old Southern Cooking, Abby Fisher, c. 1,881 CE. LeRoi Jones coined the term “soul food,” which described a collection of dishes mastered for half a millennium, c. 1,962 CE. 
+
+Collard greens appeared in ancient Greece, 800 BCE. Egyptians and Ethiopians recorded the early use of okra, and later, Europeans wrote of okra in West Africa and watermelon in Northeast Africa. Europeans imported collard greens, okra, watermelon, and black-eyed peas to the Americas and exported peanuts, along with tomatoes—species native to the Americas—to Africa. 
+
+Rice cultivation began in China, c. 7,000 BCE, and in Africa, c. 2,000 BCE. In isolated regions unrelated to the masses, the Gullah Geechee cultivated Carolina Gold Rice and preserved remnants of African religions, folklore, and crafts.
+
+Far from a global flatbread, cornbread elevated maize as a leavened savory cake. Artisans crafted leavened biscuits, gravy, mashed potatoes, pastry dough, and meats fried in seasoned batter.
+
+Middle English defined animal intestines as “chitterlings.” Peasants in medieval Europe consumed the whole pig, while commodified captives turned pork scraps—chitlins, feet, ears, and knuckles—from sows’ ears into silk purses. 
+
+Since antiquity in the Americas, wild game—braised with hickory oil, layered with wood ash, wild onion, sassafras, sumac, and nut milk—cooked over open fires. In bondage, children stoked labor-intensive 24-hour fires and smoked meats guided by elder “pitmasters” on plantations. Barbecue halls of fame awarded Black Americans for grill techniques, woods, flavors, and traditions. 
+
+Archaeology shows an independent evolution of cheese production in ancient Egypt, Mesopotamia, Greece, Rome, and the Indus Valley. Medieval Italy documented the use of flour to craft pasta noodles. Willed to Thomas Jefferson, James Hemings, “The Father of Macaroni and Cheese,” apprenticed in France, perfected cheeses, sauces, meringues…, and reigned as the first master chef in America. 
+
+Chef and restaurateur, George Speck or Crum, fried potatoes into ”Saratoga chips.” 
+                      
+George Washington Carver innovated over three hundred uses for peanuts. 
+
+Augustus Jackson, a White House chef, enhanced ice cream. Nathan ”Nearest” Green, a master distiller, mentored Jack Daniel. Richard “Dickie” Wells, owner of Wells Supper Club in Harlem, paired waffles with fried chicken. Biscuits, gravy, battered meats, ground peanuts, dressed poultry, pastries, fermentation, and distillation originated in ancient Egypt, Greece, and Rome. 
+
+Thanksgiving evolved from North American harvest festivals. Cranberries, corn, beans, and pumpkins, paired with European feasts centered on stuffed poultry and gravy. Soul food celebrated, innovated, and elevated the elements of seasonal holidays.
+
+In Afrocentric mythology, women sensed seizure and tucked dried okra seeds into coiled braids. While the captured lay covered in the filth of dungeons, African guards chained limbs, shaved heads, and violated bodies. After brutal months-long voyages, spirits dimmed on Caribbean islands. As the weary passengers touched Louisiana shores, seeds slipped from bare scalps into fertile soil, and gumbo emerged.
+
+European traders adapted the words okra and gumbo from Ila in Yoruba, ọ́kụ̀rụ̀ in Igbo, kingombo in Bantu. Okra or ground sassafras leaf, kombo/kompo in Choctaw, filé in French, thickened gumbos, soups, and stews in Louisiana Creole cuisine. Portuguese, Spanish, and French culinary traditions surfaced in the Americas—gumbo, paella, jambalaya, and French colonial Africa—thieboudienne/ceebu jën/jollof rice. 
+    
+In West Africa, the French used broken rice from Indochina into Africa to replace Oryza glaberrima with Oryza sativa. Faced with a shortage of barley, Penda Mbaye, a Wolof/Waalo-Waalo cook for a colonial governor, prepared thieboudienne/ceebu jën/jollof rice. Before colonization, West and Central Africans combined bushmeat, insects, reptiles, fish, vegetables and flavors, fermented locust beans, oilseeds, potash, Guinea pepper, and red palm oil in single vessels—one-pots, c. <500–1,000 CE. 
+  
+Academics overlooked Black Americans and bestowed the concept of soul food on Africans, based on okra, an East African vegetable, and black-eyed peas imported from West Africa by Europeans. In stark contrast, Europeans designed cuisines and desserts around tomatoes and cacao, absent the obligation to praise ancients in the Americas. Black Americans transformed ingredients from the Americas into the distinctive cuisine—soul food. 
+  
+Historians wove folktales around chefs assembled near a cast-iron cauldron. After Portuguese traders visited a lavish Louisiana estate, the French stirred the roux. In the moment, Choctaws infused sassafras flavor, while Spaniards drizzled olive oil into the African-simmered okra. Once the work of fiction faded under the light, culture bearers with an ancestral mosaic appeared—Black American Creoles. 
+  
+Descendants of the British Isles rebranded soul food as “Southern cuisine.” In the book Notes from a Young Black Chef: A Memoir, West African Chef Kwame Onwuachi connected West Africa to soul food. Foreign-owned restaurants serve African and Caribbean dishes described as soul food. In Europe, Africa, and the Caribbean, historians recorded cuisines outside the scope of soul food traditions.
+
+https://wonispotts.github.io/Vault/Cuisine.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/27.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="For nearly a century, Jim Crow laws oppressed Black Americans exclusively. Throughout the era, visitors of all races used exemption badges, pins, and documentation to enter facilities and establishments restrictive to Black Americans. Turbans were worn to feign foreignness. A Texas slave, William Ellis, assumed the name “Guillermo Eliseo,” “passed,” learned Spanish, and evaded segregation. While foreigners of African descent dined in restaurants, Black Americans, notably, Olympic gold medalist Muhammad Ali stood outside. Ali tossed an Olympic gold medal into the Ohio River to protest an incident. United Nations Secretary-General Kofi Annan, a Ghanaian, encountered a barber exclaiming, “I do not cut n—er hair.” Kofi Annan replied, “I am not a n—er. I am an African.” Kofi Annan's haircut commenced.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/28.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/29.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/30.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Country events highlight fairs, farmer's markets, cowboys, and line dance cultures.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/31.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="In the Civil Rights era, Black American skaters protested with skate-ins to protest segregated rinks.
+
+Darlene Anderson, the first Black professional roller derby skater. 
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/32.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Dolls, animal figurines, and folded paper—cootie catchers, fortune tellers— spark creativity, role play, and strategy. Bicycles, roller skates, and skateboards encourage independence, physical strength, coordination, and exploration. Jump ropes, jacks, paddleballs, Clackers/Klik Klaks, hand claps/Patty Cake rhymes develop stamina, hand-eye, coordination, and teamwork.
+
+Black American children in Philadelphia, Chicago, Baltimore, and Washington D.C. developed speed variations, footwork, rhythmic jumps, choreography, and chants timed to jumps. Two NYPD officers—David A. Walker and Ulysses Williams—created leagues, tournaments, and official rules for Double Dutch. Rhythmic alternatives to drums—hambone, patty-cake-style claps, and rhymes—Miss Mary Mack—developed.
+
+Ancient images show woven ropes used by Australians, Egyptians, Chinese, Phoenicians, and medieval Europeans for games and crafts. Hopscotch originated from ancient Roman and Greek games and agility exercises.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/33.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Technological geniuses and cinematic icons, Black Americans stood at the forefront of entertainment. The Edison Company developed the Projectoscope, which used carbon filament invented by Lewis Latimer. Berlinger, Columbia, and Thomas Edison recorded Black Americans, c. 1,890 CE. “Something Good-Negro Kiss” c. 1,898 CE, portrayed Black American life with tender romantic scenes. Born to a father enslaved by French Huguenots, Oscar Micheaux shined as one of the first Black American filmmakers. 
+                      
+The Golden Age of Black Hollywood created superstars—Josephine Baker, Lena Horne, Eartha Kitt, Pearl Bailey, Dorothy Dandridge, Theresa Harris, Katherine Dunham, Joyce Bryant, Nia Mae McKinney, Ruby Dee, Ossie Davis, Paul Robeson, and Diahann Carroll. 
+                      
+Blaxploitation films emerged in the 1970s as a genre centered Black actors and urban life.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/34.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Inspired by a black panther symbol, liberation politics, and the concept of militant self-defense of the Lowndes County Freedom Organization, Alabama, Huey Percy Newton and Bobby Seale founded the Black Panther Party in Oakland, California, c. 1,966 CE. The concept globalized with the Australian Black Panther Party, Dalit Panthers, Polynesian Panthers... 
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/35.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="The first mention of Low Riders appeared in the article 'Stolen Car Parts Seized, Hot-Rod Gang Arrested.' -California Eagle, Los Angeles, May 30, 1957. In 1963, Victor Murphy exhibited adjustable suspension, 'hopping,' craftsmanship installed by Bill Hines of Lynwood, California. Al 'Old Man' Sullivan produced hydraulic masterpieces from a shop located near Crenshaw Boulevard and 8th Street, Los Angeles, California. Athen Nelson engineered 'three-wheel motion,' where one rear wheel lifts while the opposite front and rear wheels remain grounded. Low Rider Hall of Fame: Ted Wells, Tina L. Blankenship-Early, Gary May… The band WAR recorded the culture into history with 'Lowrider' in 1975.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/36.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="As the heartbeat of humanitarianism, the emancipated moved around obstacles on a tightrope. On the international stage, Black American philanthropy shone through schools, churches, and charitable concerts—We Are The World. The historic presence of segregated armed forces, united with iconic performances by Olympians, artists, and entertainers, established an honorable reputation across the planet. 
+                      
+https://wonispotts.github.io/Vault/humanitarianism.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/37.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Performers tapped across the silver screen—the Nicolas Brothers, Bill Bogjangles Robinson, and John W. Bubbles, Fred Astaire’s mentor. Partiers buck danced, boogie-woogied, cakewalked, jitterbugged, jooked, and jived. As Dance crazes swept the world, flappers Charlestoned, and acrobatics shone through Swing Dancers and Lindy hoppers. Hips rocked and rolled to the Twist. Stars from the cosmos fell and spun glittery balls over Discotheques. In the streets and on the Soul Train line, Hip-Hop produced urban dances—Breakers, B-Boyers, Boogalooers, Pop-Lockers, Turfers, Krumpers, and Crip Walkers. Stylized moves developed—Robot, Worm, Jerk, Centipede, Cabbage Patch, Dougie, Humpty, Moonwalk, Hammertime, and HBCU Marching.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/38.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Jazz Clubs in the 1930s featured Black Americans in Zoot suits.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/39.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/40.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="A sanctuary from the storm, churches acted as spaces to share plant medicine, education, and music. On fertile grounds, congregants cultivated economic cooperation, political activism, and legal advocacy.
+
+In symbolic marriage ceremonies, enslaved couples “jumped the broom.” The hands of midwives delivered the vulnerable into harsh environments, while elders prepared older children for harsh realities through “the talk.”
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/41.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black American men in pompadours, wavy conks, and lined-up cuts harmonized in barbershop quartets. 
+                      
+Earliest recordings—Unique Quartette, “Mamma’s Black Baby Boy,” c. 1,893 CE, and Dinwiddie Colored Quartet, and “Down At The Old Camp Ground,” c. 1,902 CE. 
+                      
+https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/42.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Before the Country genre, enslaved folk musicians developed a distinct down-stroke—clawhammer or frailing technique on stringed instruments exclusively handmade by Black Americans, c. 1,600-1,800 CE. Phil Jamison's book Hoedowns, Reels, and Frolics: Roots and Branches of Southern Appalachian Dance discovered archival evidence of Black American dance callers, hoedowns, square dances, fiddlers, and banjo players in the Southern Appalachia, c. 1,690-1,800 CE. European descendant Americans mocked Black Americans in minstrel shows and later adopted the traditions. Artists painted the enslaved as musicians, 'The Old Plantation,' John Rose, c. 1,785 CE. 
+
+Hoedown
+Once enslaved cotton farmers placed the hoes down, breakdown dances began.   
+                      
+https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/43.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/44.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Jazz: Charles “Buddy” Bolden “The First Jazzman,” c. 1,895 CE, “Funky Butt” aka “Buddy Bolden's Blues.” 
+Versatile Four, “Down Home Rag,” Wilbur Sweatman, c. 1,916 CE. Joseph Nathan Oliver, “King Oliver” “New Orleans Stomp,” c. 1,923 CE. 
+
+Big Band Jazz and Swing: The Duke Ellington Band, “King Of Swing” “Soda Fountain Rag” aka ”Poodle Dog Rag,” c. 1,914 CE. Cab Calloway and His Orchestra, Cotton Club performance, c. 1,927 CE. “Minnie The Moocher,” c. 1,931 CE. Count Basie's Big Band, c. 1,935 ”One O'Clock Jump,” c. 1,937 CE. Lionel Hampton Orchestra, c. 1,940 CE. ”Flying Home,” c. 1,939 CE. 
+
+Scat: Louis Armstrong, “Heebie Jeebies,” c. 1,926 CE. The Mills Brothers, “Tiger Rag,” c. 1,931 CE. Cab Calloway, “Hi-De-Ho,” c. 1,934 CE. Ella Fitzgerald, “A-Tisket, A-Tasket,” c. 1,938 CE. 
+
+Bebop: Coleman Hawkins, “Rainbow Mist,” c. 1,944 CE. Dizzy Gillespie, ”Groovin' High,” c. 1,945 CE. Charlie “Yardbird” Parker, ”Now's The Time,” c. 1,945 CE. Miles Davis, “First Miles,” c. 1,945 CE. Thelonious Monk, “Round Midnight,” c. 1,947 CE. John Coltrane, “Giant Steps,”  c. 1,959 CE.
+
+Latin Jazz: For authenticity, Dizzy Gillespie's band featured Chano Pozo, c. 1,947 CE. Carnegie Hall performance. Collaborations with Chano Pozo and Mario Bauzá further developed Latin Jazz, a genre created in the United States of America.
+
+“Jazz is known all over the world as an American musical art form and that's it. No America, no jazz. I've seen people try to connect it to other countries, for instance to Africa, but it doesn't have a damn thing to do with Africa.” -Art Blakey
+                      
+https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/45.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Black Americans used the words 'Rock and Roll', which meant to have sex colloquially and in music lyrics. Trixie Smith, 'My Man Rocks Me With One Steady Roll,' c. 1,922 CE. Robert Johnson, 'Cross Roads Blues,' c. 1,936 CE. 'Terraplane Blues,' c. 1,936 CE. Sister Rosetta Tharpe, 'Rock Me,' c. 1,938 CE. Arthur Crudup, 'That's All Right Mama,' c. 1,946 CE. Wynonie Harris, 'Good Rockin Tonight,' c. 1,948 CE. Jackie Brenston, 'Rocket 88,' c. 1,951 CE. Bo Diddley, 'Bo Diddley,' c. 1,955 CE. Chuck Berry, 'Maybellene,' c. 1,955 CE. Little Richard, 'Tutti Frutti,' c. 1,955 CE. Punk Rock: Death Band—Bobby, David, and Dannis Hackney, 'Spiritual • Mental • Physical,' c. 1,974-1,976 CE. Grunge Rock: Tina Marie Bell and Bam Bam, 'Villains (Also Wear White),' c. 1,984 CE. 
+                      
+https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/46.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/47.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/48.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="In 1920s Harlem, spacious city loft residents hosted “Rent Parties” and laid the foundation for the disco scene. 
+  
+https://wonispotts.github.io/Vault/music.pdf
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/49.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Evolution of Rap: Beale Street Sheiks recorded works, c. 1,927-1,929 CE. Frankie “Halfpint” Jaxon, recorded works, c. 1,926-1,940 CE. Fisk Jubilee Singers, “Preacher's Delight,” c. 1,937 CE. The Mills Brothers, “Caravan,” c. 1,938 CE. Louis Thomas Jordan, “You Gotta Have A Beat,” c. 1,940 CE. 
+
+Muhammad Ali, “I Am The Greatest,” c. 1,963 CE. Pigmeat Markham, “Here Comes The Judge,” c. 1,968 CE.
+
+“K.C. The Prince of Soul,” rhythmically rhymed over Disco records, c. 1,970 CE. “Disco King Mario” hosted large parties and park jams, c. 1,970 CE. 
+
+In New York's Charles Gallery, a Bunch of Grapes, the Stardust Ballroom, and the Apollo Theater, Anthony Holloway aka “DJ Hollywood” created “Disco Rap” with continuous rhymes over MC announcements. 
+
+The words “Hip-Hop” and “Throw your hands in the air” rang out over Disco percussion sections, c. 1,971 CE.“ DJ Hollywood,” Robert Keith Wiggins—“Keef Keith Cowboy” and Kevin Smith—“Lovebug Starski”...rhymed the words “Hip-Hop” over R&B, Funk, and Soul genres, which marked the origins of modern “Rap” and “Hip-Hop.” 
+
+Fatback Band, Bill Curtis, “King Tim III—Personality Jock,” c. 3-25- 1,979 CE. The genre evolved with Tupac Shakur.
+
+Evolution of Disc Jockeys: Jack L. Cooper, a National Radio Hall of Fame disc jockey, c. 1,930 CE. Mary Elizabeth Goode “Mary Dee,” radio disc jockey—used two turntables, c. 1,940-1,960 CE. 
+
+Jonathon Cameron Flowers, “Grandmaster Flowers” opened for James Brown at Yankee Stadium and used three turntables, c. 1,969 CE. Pete Jones, “Pete DJ Jones,” radio disc jockey, c. 1,970-1,980 CE. Anthony Holloway aka “DJ Hollywood,” c. 1,971 CE. 
+
+Fatback Band/Bill Curtis recorded “King Tim III—Personality Jock,” c. 3-25-1,979 CE. Darren “The Human Beat Box” Robinson—Big Buff—the Ox That Rocks won a Radio City Music Hall talent contest, c. 1,983 CE.
+
+Breakdance Evolution: One of Thomas Edison's early motion pictures, “The Pickaninny Dance from The Passing Show,” c. 1,894 CE. 
+
+Mills Brothers, “Caravan.” c. 1,938 CE. Will Maston Trio, “Dancing Boogie,” c. 1,938 CE. Bill Bailey, “The Cabin In The Sky,” “Backslide or Moonwalk,” c. 1,943 CE. 
+
+James Brown, splits, boogaloo, shuffle, c. 1,960-2,000 CE. Don ”Campbellock” Campbell, Soul Train, c. 1,971-1,973 CE. Sam Solomon, “Boogaloo Sam” and Timothy Solomon, “Popin’ Pete” Soul Train, c. 1,970-1,980 CE.  
+
+Hip-Hop: The Cincinnati Enquirer mentioned the word “Hep,” a version of “Hip,” which meant ”to be aware” or ”to be in the know,” c. 5-9-1,903 CE. The word “Hop” referred to informal dances, recorded, c. 1,700 CE. Military article, “Hip, Hop, Thuh-ree, Fo,” c. Great Lakes Bulletin, c. 12-4-1,970 CE.
+
+Urban Graffiti: Darryl McCray, “Cornbread,” c. 1,965 CE. Graffiti, derived from the Italian word graffio—“scratch”—dates back thousands of years in ancient Greece, Pompeii, and Anatolia.
+
+Grills: A symbol or wealth, gold and bejeweled teeth originate in Egypt. 
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/50.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Rosco Gordon's 'No More Doggin' accented on the off beats. 'Rosco Rhythm,' c. 1,952 CE, formed the foundation of ska and rocksteady, c. 1,960 CE. Robert 'Bobby' Spencer of the Cadillacs, published 'My Boy Lollipop,' c. 1,956. Johnny Nash, a Black American signed with a Kingston, Jamaica record company. The singer topped the charts with the first in a string of international reggae songs, 'Hold Me Tight,' c. 1,968 CE. Johnny Nash introduced 'Stir It Up,' written by Bob Marley and signed the Wailers to JAD Records.
+
+Born in Nigeria, under British colonial rule, Fela Kuti traveled to New York for musical inspiration and discovered “Blackness.” The Nigerian musician fused the rhythms of James Brown, the improvisation of Miles Davis, and the soul of Motown with Highlife and Yoruba percussion. 
+                      
+Sailors and British colonists in Africa, introduced brass instruments and Black American jazz. “I started out playing Highlife and was the first to modernize it with Rock, Jazz, and R&B. It was Afrobeat, but my record company called it Afro-Soul.” -Orlando Owoh Julius. The name “Highlife” originated from aristocratic audiences and exclusive clubs.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/51.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Amid the Great Migration, patrols formed to defend against race riots and global crime networks—mobs, mafias, and later, cartels. While the authorities demonized and penalized Black Americans, newspapers portrayed Depression-era mass murderers—Bonnie and Clyde, Pretty Boy Floyd, John Dillinger, Baby Face Nelson, Al Capone, Ma Barker, and the Barrow Gang—as sympathetic characters.
+
+By the mid-twentieth century, manufacturers globalized, millions of workers lost jobs, neighborhoods spiraled, and the media magnified scenes of urban decay. Out of the spotlight, waves of coal mine closures in Appalachia left a wasteland of drug-fueled lawlessness.
+
+To keep affluent property values high, authorities distort data, refuse to press charges, reduce charges, grant early release, permit theft—Proposition 47—and fail to report crime to the FBI. Newtown, Connecticut, reported zero murders after twenty-six students and staff were massacred. Statistics show a 2% incarceration rate for males of European descent, contrasted by a 4% incarceration rate for Black males, with a 50% exoneration rate among the 4%.
+
+Black Americans live in every state—rural areas, suburbs, cities—and as expats, with no globally organized crime, universal passport bans, or oversight by the United Nations or Interpol.
+                    
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/52.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Global Cyberbullies 
+Eliminating Barriers for the Liberation of Africa, operated by Seth Wiredu: Africans paid to impersonate and ethnically antagonize Black Americans.
+
+Internet Research Agency in St. Petersburg, Russia: Senate Intelligence Committee reports showed references to race on 66% of Facebook ads targeted at Black Americans.
+
+Russian networks associated with Yevgeny Prigozhin and Asians run thousands of Black American impersonation pages on social media.
+
+Centuries of Controlled Opposition Operatives 
+Pan-Africans: Jamaican-born Marcus Garvey founded the Universal Negro Improvement Association, promoted the 'Back to Africa' movement, waved a flag to symbolize spilled blood, a shared Blackness, and solidarity with Ireland, purchased damaged ships for the Black Star Line, committed mail fraud, clashed with Black American leaders, which led to the 'Garvey Must Go' campaign and deportation. Garvey aligned with white supremacists—Walter A. Plecker, the Ku Klux Klan, and Methodist preacher Earnest Sevier Cox. Garvey’s letter to Cox read, 'The fact is that the modern Negro is a lazy, good-for-nothing slumberer…' 
+
+The American Society of African Culture, founded in 1957: Leadership exposed as operatives funded by a CIA front, Council on Race and Caste in World Affairs.
+
+African People’s Socialist Party/Uhuru Movement: Convicted as Russian agents for Aleksandr Ionov, a Moscow-based Russian national.
+
+NAARC/NCOBRA/IBW: Grants funded by controlled opposition, the MacArthur Foundation. 
+
+Hotep Misinformation Agents
+Black Americans are the real Egyptians, Hebrews, Moors, American Indians, Swarthy Europeans, Pangeans, Tartarians, Atlanteans...  
+
+In 1909, an anonymous writer stirred imaginations and conspiracy theories in the Arizona Gazette with a fictional adventurer, G. E. Kincaid of the Smithsonian, and the discovery of a Grand Canyon cave with hidden Egyptian artifacts. Pseudo-intellectual Hoteps framed America as Egypt and Black Americans lost Pharaohs. 
+
+Egyptians: While 35% of Black American males carry the R1b haplogroup, a segment of Black American males share a paternal haplogroup with Ramesses III—an ancient connection and a seed of truth. 
+
+Hebrew Israelites/Twelve Tribes: Genetic researchers found Africans—Lemba—with J haplogroup and Cohen priestly genetics found in Levantines and Hebrews, a lineage with no connection to Black Americans. Aggressive, authoritative, and amplified with bullhorns, renegades rant revisionist rhetoric on street corners.     
+
+Moors/Muslim sub-Saharans, Berbers, and Arabs: Legends say Moorish pirates stranded in the Delaware Bay integrated into tri-racial isolates. The state of Delaware legally named the descendants Delaware Moors/Cheswold Moors. 
+
+In the Moors Sundry Act of 1790, eight Moorish African immigrants, subjects of the Emperor, Sultan, and Kingdom of Morocco, sought and won a status above Black Americans. 
+
+Moorish sovereign citizens usurped the Moorish identity, quoted 'Black is Dead in the Eyes of the Law,' promoted extremism and acted criminally against Black Americans, a mockery of legitimate nationalist organizations, past and present. 
+
+Indians: Black American genetics show Oceanian and Beringian indigenous ancestry—an ethnogenesis separate from Caribbeans, South Americans, and Central Americans of Taino ancestry. Pan-Americans falsely assert that Taino genetics ancestrally connect all North and South Americans into one ethnicity. Europeans applied the term “Indian” to South Asians, Caribbeans/“West Indians,” Oceanians, and Beringian descendants.
+
+Swarthy Europeans: Benjamin Franklin described Germans as swarthy, a reference to a lack of status, class, culture, or Englishness. Black Americans exhibit 24% European ancestry from the English, Irish, Dutch, Germans, Scandinavians.
+
+Pangeans: Pangea proponents claim a cataclysm 300 million years ago dispersed humans across seven continents, the origin of Black Americans. Humans emerged 300,000 years ago—a chronological flaw in the theory. 
+
+Tartarians: A historical name for the Central Asian land of Turkic Tatars.
+
+Atlanteans: Plato described Atlantis as an island beyond the Pillars of Hercules. 
+
+Slavery Deniers: Reparation saboteurs deny wooden ships sailed across the Atlantic. Vikings and monach-commissioned Europeans sailed in wooden ships to North America as proven by settlements and colonization. After abolition, vessels were reconfigured for cargo, renamed, and displayed in museums worldwide.
+
+While Black Americans experience targeted misinformation, decades of propagandized media and corrupt institutions plague the United States of America.
+
+Media Collaboration with Intelligence Agencies: Operation Mockingbird, 1948 and CIA Openness Task Force Memo, PAO 91-0586, 1991
+
+Entertainment: The easiest way to inject a propaganda idea into most people's minds is to let it go through the medium of an entertainment picture when they do not realize they're being propagandized. —Elmer Davis, Office of War Information (OWI), 1942
+
+Commercial Promotion: Physician polls show more doctors smoke Camels than any other cigarette. —R.J. Reynolds Tobacco Company, 1946
+
+Performative Activism: From Greenhouse Earth to the Ice Age, organisms existed across a wide range of temperatures. Over millennia, ancients worshipped deities and offered sacrifices for favorable weather. Modern environmentalists scold individuals for climate shifts and organize futile nuisance campaigns—Carbon Footprint, Reduce, Reuse, Recycle, World Car-Free Day, Flight Free, Breathe Life, Save the Trees… while industrial polluters operate in tandem with governments.
+
+Agriculture: Civilized man is the only animal clever enough to manufacture his own food, and the only animal stupid enough to eat it. —Barry Groves, Homo Carnivorus lecture
+
+Education: We shall not try to make these people or any of their children into philosophers or men of learning or of science. —Frederick T. Gates, General Education Board, 1913 
+
+Finance: …banking establishments are more dangerous than standing armies… —Thomas Jefferson, letter to John Taylor, 1816 
+
+Law and Order: Justice is open to everyone in the same way as the Ritz Hotel. —Judge Sturgess
+
+Politics: There are two things that are important in politics. The first is money, and I can't remember what the second one is. —Mark Hanna, U.S. Senator  
+
+Medicine: Once upon a time, drug companies promoted drugs to treat diseases. Now it is often the opposite. They promote diseases to fit their drugs. ―Marcia Angell, The Truth About the Drug Companies, 2004
+
+There is an inherent financial, intellectual, and emotional conflict of interest that leads every specialty to recommend overdiagnosis.  There are no laboratory tests for psychiatry, no bright lines to say who is sick and who is well. Psychiatric diagnoses should always be written in pencil, especially for teenagers and children. —Allen Frances MD, Psychiatric Times, Saving Normal, and Psychology Today
+
+There is no such thing as mental illness, hence also no such thing as psychotherapy. —Thomas Szasz, Psychology Today
+
+In my last depression, I took Coca again, and a small dose lifted me to the heights in a wonderful fashion.  He added that he was busy collecting the literature for a song of praise to the magical substance. —Sigmund Freud in a letter to Martha Bernays, 1884
+
+Privacy and Surveillance: Those who would give up essential Liberty, to purchase a little temporary  LHH safety, deserve neither Liberty nor Safety. —Benjamin Franklin, 1755
+                 
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/53.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="In the early 1800s, newspapers acted as a hammer in the abolitionists’ toolkit. Presses rolled in New York with Freedom's Journal, The Rights of All, The Weekly Advocate, and The Colored American. By the mid-1800s, Frederick Douglass published the North Star in Rochester, New York. Abolition, emancipation, and reconstruction dominated headlines across the country in Pittsburgh, New York, Philadelphia, Washington, D.C., San Francisco, Cincinnati, Cleveland, Atlanta, New Orleans, Indianapolis, St. Paul, Minnesota, and Richmond, Virginia. From the late 1800s to the 1900s, coverage broadened into Chicago, Detroit, Baltimore, St. Louis, Kansas City, Houston, Dallas, Oklahoma City, and Los Angeles as topics shifted to the Great Migration, urban culture, integration, and civil rights.
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/54.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Woni Spotts researched ancient treasures, a timeless collection presented in Whispers from Outer Realms. Religious texts and beliefs revealed parallel systems across continents and millennia, used to navigate seen and unseen worlds. Cultures developed traditions of ritual reciprocity-prayer, sacrifice, offerings, protective amulets, and trance states-to affect life on Earth. Worshipers branched into countless sects as the volatile mechanics of spiritual practices created experiences of comfort, abandonment, or doom. Through declared superstitious, mythological, archaic, and flawed by moderns, ancestral wisdom endured-preserved, adapted, renamed, and built on a fractured foundation.
+
+Chapters: 
+Existence
+Beyond Instincts
+Enlightenment
+Acceptance
+Dimensional Love
+Atmosphere and Auric Purification
+Meditation with Inner Temples and Breaths of Life
+Ceremonial Moon Phased Flower Baths
+Deep Sleep with Symbolic Dreams
+Crystals, Stardust on Earth
+Deckle Edged Reflections with Words and Art Expression
+Roots of Minimalism, Scenes of Minimalism, Object Orientation-Feng Shui, and Wisdom
+In the Footsteps of the Ancients-Spiritual Exploration
+Reference: Light as a Feather Feasts, Exercise, Organization, Genealogy, and Afterlife Plans
+
+Spotts, W. (2025). Whispers From Outer Realms.
+                      
+Spotts, W. (2023). Secret Origins of Black Americans." muted playsinline preload="metadata"><source src="videos/56.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+
+  <div class="item"><video data-caption="Order a long-form birth certificate or adoption paperwork from the county of birth. Older birth certificates, death certificates, and marriage licenses may be available online. Include common misspellings during internet searches. Birth certificates contain the mother’s maiden name, father’s name, ethnicity, place of birth, nationality, addresses, etc.
+
+Use parents' information to search for or order long-form birth certificates, announcements, death certificates, marriage licenses, immigration records (alien files, visa records, enemy alien records, passport records, naturalization records), property records, deeds, wills, probate records, tax rolls, crime/court records, runaway notices (slaves, indentured servants, and wives), Dawes rolls, Freedman’s Bank/Bureau records, school report cards, yearbooks, archived photographs, census records, local and county histories, genealogy periodicals, military records, pension records, draft cards, church/bible records (births, marriages, deaths, baptisms, confirmations, ministers' journals, and christenings), telephone directories, newspapers, obituaries, tombstone photographs, and burial records.
+
+Parents' birth certificates, death certificates, marriage licenses, etc., list grandparents’ names and locations. Repeat the process with grandparents’, great-grandparents’, and great-great-grandparents’ names. Exercise patience when ordering county records. Experience the excitement of breaking down brick walls. Keep records organized. Research may connect to a developed genealogy study or family tree or a DNA project.
+
+Older family members may have oral histories, old letters, scrapbooks, diaries, journals, photographs, and documents.
+
+Consider whole-genome testing instead of popular tests. DNA cousins may assist in genealogy research. DNA tests can be anonymous without an attached name to a specific specimen.
+
+Genealogy Resources
+
+FamilySearch.org
+
+https://www.familysearch.org/en/search/collection/1420440
+ 
+https://www.familysearch.org/en/search/collection/3161105
+
+Search Google with the terms “family search” and a collection name: 1850/1860 Slave Schedules, 1850/1860 Census Draft Cards WWI/WWII, Freedman’s Bank, and Dawes Rolls. 
+
+Ancestry.com 
+
+Archives.com
+
+Archives.gov 
+
+Findagrave.com
+
+Billiongraves.com 
+
+Fold3.com
+
+nps.gov/
+
+freedmensbureau.com
+
+Newspaper.com
+
+Legacy.com
+
+Loc.gov /rr/ genealogy/
+
+USgenweb.org 
+
+Enslaved.org
+
+Slavevoyages.org 
+
+afrigeneas.com
+
+Create a family tree. https://www.wikitree.com/
+ 
+Write a few paragraphs in chronological order. Begin the narrative with the oldest relatives. Add links to genealogy records and historic family and genealogy images in chronological order.
+ 
+Example: John Doe was born in 1833, enslaved in Anywhere County, State, USA. During the Civil War, Doe joined the Union Army after his plantation was liberated. John Doe trained as a barber and married Jane Smith in 1868.
+ 
+Contact the Library of Congress at gifts@loc.gov with “Genealogy Gift” in the subject line and submit a genealogy report.
+
+FreedmenNation.org offers genealogy assistance for Freedmen.                       
+
+Spotts, W. (2023). Secret Origins of Black Americans.
+
+Spotts, W. (2026). Naked Steps: A Timeless Panoramic Ancestral Odyssey." muted playsinline preload="metadata"><source src="videos/57.mp4" type="video/mp4"></video><div class="play-badge"></div></div>
+</div>
+
+<div class="support-banner">
+  <a href="mailto:wonispotts@gmail.com" class="donate-btn">
+    Contact
+  </a>
+  <a href="https://cash.app/$wspotts" target="_blank" class="donate-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px; margin-right:6px;">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 15h-1v-1.05c-1.5-.2-2.7-1.05-2.8-2.6h1.4c.1.85.7 1.4 1.9 1.4 1.1 0 1.8-.5 1.8-1.3 0-.7-.5-1.1-1.9-1.45-1.85-.45-2.9-1.05-2.9-2.55 0-1.3 1-2.15 2.5-2.35V6h1v1.1c1.35.2 2.35 1 2.5 2.35h-1.4c-.1-.7-.6-1.15-1.6-1.15-1 0-1.6.45-1.6 1.1 0 .65.5 1 1.9 1.35 1.95.5 2.9 1.15 2.9 2.65 0 1.4-1.05 2.25-2.7 2.5V17z"/>
+    </svg>
+    Support
+  </a>
+  <a href="https://paypal.me/longsunset" target="_blank" class="donate-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px; margin-right:6px;">
+      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4H4V6h16v2zm0 8H4v-6h16v6z"/>
+    </svg>
+    Support
+  </a>
+  <a href="https://author.amazon.com/books" target="_blank" class="donate-btn">
+    Books
+  </a>
+</div>
+
+<div id="lightbox">
+  <div class="lb-close" id="lbClose">&times;</div>
+  <div class="lb-arrow" id="lb-prev">&#10094;</div>
+  <div id="lightbox-content">
+    <div id="lightbox-stage">
+      <video id="lightbox-video" controls playsinline></video>
+    </div>
+    <div id="lightbox-sidebar">
+      <div id="lightbox-caption"></div>
+      <div id="lightbox-counter"></div>
+    </div>
+  </div>
+  <div class="lb-arrow" id="lb-next">&#10095;</div>
+</div>
+
+<script>
+const grid = document.getElementById('galleryGrid');
+const items = Array.from(grid.querySelectorAll('.item'));
+const thumbs = items.map(item => item.querySelector('video'));
+
+let currentIndex = 0;
+
+const lightbox = document.getElementById('lightbox');
+const lbVideo = document.getElementById('lightbox-video');
+const lbCaption = document.getElementById('lightbox-caption');
+const lbCounter = document.getElementById('lightbox-counter');
+
+function showVideo(index) {
+  currentIndex = (index + thumbs.length) % thumbs.length;
+  const video = thumbs[currentIndex];
+  const src = video.querySelector('source').src;
+  lbVideo.pause();
+  lbVideo.src = src;
+  lbVideo.currentTime = 0;
+  lbVideo.play().catch(() => {}); // autoplay may be blocked until user interacts; controls remain available
+  lbCaption.textContent = video.dataset.caption;
+  lbCounter.textContent = (currentIndex + 1) + ' / ' + thumbs.length;
+}
+
+function closeLightbox() {
+  lbVideo.pause();
+  lbVideo.removeAttribute('src');
+  lbVideo.load();
+  lightbox.style.display = 'none';
+}
+
+items.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    showVideo(i);
+  });
+});
+
+document.getElementById('lb-next').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showVideo(currentIndex + 1);
+});
+document.getElementById('lb-prev').addEventListener('click', (e) => {
+  e.stopPropagation();
+  showVideo(currentIndex - 1);
+});
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display !== 'flex') return;
+  if (e.key === 'ArrowRight') showVideo(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showVideo(currentIndex - 1);
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
